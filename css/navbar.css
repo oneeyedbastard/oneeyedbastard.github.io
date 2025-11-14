@@ -33,14 +33,16 @@
     text-decoration: none;
     text-transform: uppercase;
     align-items: center;
-    margin: 25px;
+    margin: 22px;
     font-family: 'Alfa Slab One', serif;
     font-weight: 100;
   }
   
   .navlist a:hover {
     transition: all 0.1s ease;
-    color: #666666;
+    background-color: #000000;
+    color: #ffff;
+    padding: 5px;
   }
 
   .navlist.open {
@@ -100,3 +102,4 @@
    
 
   }
+
