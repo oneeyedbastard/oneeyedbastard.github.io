@@ -2,9 +2,44 @@
 <html lang="es">
 
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- META TAGS SEO MEJORADOS -->
+  <title>Ariel Fernández - Desarrollador Full Stack Web PHP | Portfolio Profesional</title>
+  <meta name="description" content="Desarrollador Full Stack Web especializado en PHP. Portfolio profesional con proyectos destacados y experiencia en desarrollo web.">
+  <meta name="keywords" content="desarrollador full stack, PHP, desarrollador web, portfolio, programador, JavaScript, MySQL, Laravel">
+  <meta name="author" content="Ariel Fernández">
+  <meta name="robots" content="index, follow">
+  
+  <!-- OPEN GRAPH / SOCIAL MEDIA META TAGS -->
+  <meta property="og:title" content="Ariel Fernández - Desarrollador Full Stack Web PHP">
+  <meta property="og:description" content="Desarrollador Full Stack Web especializado en PHP. Portfolio profesional con proyectos destacados.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://oneeyedbastard.github.io/">
+  <meta property="og:image" content="https://oneeyedbastard.github.io/images/og-image.jpg">
+  
+  <!-- TWITTER CARD META TAGS -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ariel Fernández - Desarrollador Full Stack Web PHP">
+  <meta name="twitter:description" content="Desarrollador Full Stack Web especializado en PHP. Portfolio profesional.">
+  <meta name="twitter:image" content="https://oneeyedbastard.github.io/images/twitter-image.jpg">
+  
+  <!-- SCHEMA MARKUP PARA PERSONA (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ariel Fernández",
+    "jobTitle": "Full Stack Web Developer",
+    "url": "https://oneeyedbastard.github.io/",
+    "sameAs": [
+      "https://www.linkedin.com/in/tu-perfil",
+      "https://github.com/oneeyedbastard"
+    ],
+    "knowsAbout": ["PHP", "JavaScript", "HTML", "CSS", "MySQL", "Laravel", "Desarrollo Web"]
+  }
+  </script>
 
   <!-- ESTILOS NAVBAR -->
   <link rel="stylesheet" type="text/css" href="css/navbar.css">
@@ -12,53 +47,85 @@
   <link rel="stylesheet" type="text/css" href="css/styles.css">
 
   <link rel="icon" href="images/icon.png" type="image/png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;900&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
-
-  <title>Ariel Fernández: Full Stack Web Developer in PHP</title>
+  <link rel="canonical" href="https://oneeyedbastard.github.io/" />
+  
+  <!-- PRELOAD PARA FUENTES CRÍTICAS -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- FALLBACK PARA FUENTES -->
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  </noscript>
 </head>
 
 <body>
-  <header class="site-header">
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+  
+  <header class="site-header" role="banner">
 
-    <div class="menu-icon">
+    <div class="menu-icon" aria-label="Menú de navegación" aria-expanded="false" role="button" tabindex="0">
       <div class="line1"></div>
       <div class="line2"></div>
       <div class="line3"></div>
     </div>
 
-
-
-    <nav class="nav">
-
+    <nav class="nav" role="navigation" aria-label="Navegación principal">
       <ul class="navlist">
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html" aria-current="page">Home</a></li>
         <li><a href="proyectos.html">Projects</a></li>
         <li><a href="contacto.html">About me</a></li>
       </ul>
-
     </nav>
   </header>
 
-  <div class="rectangulo-negro">
-    <div class="contenedor-nombre">ARIEL <br>FERNÁNDEZ</div>
-    <div class="fullstack"> Full Stack Web Developer in PHP</div>
-  </div>
+  <main id="main-content" role="main">
+    <section class="hero-section" aria-labelledby="hero-heading">
+      <div class="rectangulo-negro">
+        <h1 id="hero-heading" class="contenedor-nombre">ARIEL <br>FERNÁNDEZ</h1>
+        <p class="fullstack">Full Stack Web Developer in PHP</p>
+      </div>
+    </section>
 
+    <section class="code-section" aria-labelledby="code-heading">
+      <h2 id="code-heading" class="visually-hidden">Código de ejemplo</h2>
+      <div class="cuadrado-negro" id="codigoPHP">
+        <!-- Contenido generado dinámicamente -->
+      </div>
+    </section>
+  </main>
 
-  <div class="cuadrado-negro" id="codigoPHP">
-    <!-- Contenido generado dinámicamente -->
-  </div>
+  <!-- ESTRUCTURA SEMÁNTICA ADICIONAL PARA SEO -->
+  <footer role="contentinfo">
+    <div class="footer-content">
+      <p>&copy; 2023 ONE EYED BASTARD. Todos los derechos reservados.</p>
+    </div>
+  </footer>
 
   <script src="js/navbar.js"></script>
   <script src="js/script.js"></script>
 
-
+  <!-- SCRIPT PARA MEJORAR ACCESIBILIDAD DEL MENÚ -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuIcon = document.querySelector('.menu-icon');
+      
+      menuIcon.addEventListener('click', function() {
+        const expanded = this.getAttribute('aria-expanded') === 'true' || false;
+        this.setAttribute('aria-expanded', !expanded);
+      });
+      
+      menuIcon.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.click();
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
