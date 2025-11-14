@@ -1,222 +1,206 @@
-@keyframes oscilarArribaAbajo {
-    0% { transform: translate(-50%, -50%); }
-    50% { transform: translate(-50%, calc(-50% - 8px)); } /* Se mueve 8px hacia arriba */
-    100% { transform: translate(-50%, -50%); }
-}
-
-@keyframes rotarPoco {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    50% { transform: translate(-50%, -50%) rotate(0.8deg); } /* Rota 0.8 grados */
-    100% { transform: translate(-50%, -50%) rotate(0deg); }
-}
-
+/* --- Reset y Estilos Globales --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.background-image-01 {
-    position: fixed;
-    top: 70%;
-    left: 40%;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-    width: auto;
-    height: 70%;    
-    animation: oscilarArribaAbajo 20s ease-in-out infinite alternate; /* Aplicamos animación */
-}
-
-.background-image-02 {
-    position: fixed;
-    top: 80%;
-    left: 100%;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-    width: auto;
-    height: 60%;    
-    animation: oscilarArribaAbajo 18s ease-in-out infinite alternate-reverse; /* Animación inversa */
-}
-
-
-.background-image-03 { /* Esto en tu HTML original es background-image-03 para tapa.png */
-    position: fixed;
-    top: 60%;
-    left: 20%;
-    transform: translate(-50%, -50%) rotate(-10deg); 
-    z-index: -5;
-    width: auto;
+body, html {
     height: 100%;
-    opacity: 0.2; 
-    animation: rotarPoco 25s linear infinite alternate; /* Aplicamos animación de rotación */
+    font-family: 'Newsreader', serif;
+    background-color: #f4f4f4; /* Un fondo base suave */
 }
 
-
-.background-image-04 { /* Esto en tu HTML original es background-image-04 para imagen-gol-maradona-campeonato-4.webp */
-    position: fixed;
-    top: 35%;
-    left: 100%;
-    transform: translate(-50%, -50%) rotate(10deg); 
-    z-index: -3;
-    width: auto;
-    height: 80%;
-    opacity: 0.9;
-    animation: oscilarArribaAbajo 22s ease-in-out infinite alternate; /* Aplicamos animación */
-}
-
-h1 {
-    text-transform: uppercase;
-    color: rgb(48, 46, 46);
-    font-size: 250px;
-    font-family: 'Six Caps', sans-serif;
-    text-align: center;
-}
-
-.contenedor-frase {
-    margin: 0 auto;
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 80vw;
-    height: 900px;
-}
 a {
     text-decoration: none;
+    color: inherit; /* Hereda el color del padre */
 }
 
-p {
-    font-size: 65px;
+/* --- Keyframes (sin cambios) --- */
+@keyframes oscilarArribaAbajo {
+    0% { transform: translate(-50%, -50%); }
+    50% { transform: translate(-50%, calc(-50% - 8px)); }
+    100% { transform: translate(-50%, -50%); }
+}
+
+@keyframes rotarPoco {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    50% { transform: translate(-50%, -50%) rotate(0.8deg); }
+    100% { transform: translate(-50%, -50%) rotate(0deg); }
+}
+
+
+/* ======================================= */
+/* --- ESTILOS BASE (MOBILE-FIRST) --- */
+/* ======================================= */
+
+/* Usamos Flexbox en el contenedor principal para centrar
+  todo el contenido vertical y horizontalmente.
+  Es mucho más limpio que márgenes automáticos.
+*/
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente */
+    align-items: center;    /* Centra horizontalmente */
+    min-height: 100vh;      /* Ocupa al menos toda la pantalla */
+    padding: 20px;          /* Espacio en los bordes para mobile */
     text-align: center;
-    font-family: 'Newsreader', serif;
-    font-weight: 400;
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.726);
-}
-
-
-button {
-    display: block;
-    background-color: rgb(48, 46, 46);
-    border: none;
-    font-family: 'Six Caps', sans-serif;
-    color: white;
-    width: 250px;
-    font-size: 45px;
-    padding: 10px;
-    border-radius: 10px;
-    margin: 0 auto;
-    margin-top: 10px;
-    transition: all 0.3s ease; 
-    text-transform: uppercase;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: black;
-    transform: scale(1.03); 
-    color: rgb(48, 46, 46); /* Corregido de 'white(48, 46, 46)' a 'rgb(48, 46, 46)' o 'white' */
-}
-
-@media screen and (min-width: 1200px) {
-
-.background-image-01 {
-    position: fixed;
-    top: 60%;
-    left: 20%;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-    width: auto;
-    height: 80%;    
-    animation: oscilarArribaAbajo 20s ease-in-out infinite alternate; /* Aplicamos animación */
-}
-
-.background-image-02 {
-    position: fixed;
-    top: 60%;
-    left: 90%;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-    width: auto;
-    height: 80%;    
-    animation: oscilarArribaAbajo 18s ease-in-out infinite alternate-reverse; /* Animación inversa */
-}
-
-
-.background-image-03 { /* Corresponde a tapa.png */
-    position: fixed;
-    top: 60%;
-    left: 20%;
-    transform: translate(-50%, -50%) rotate(-10deg); 
-    z-index: -3;
-    width: auto;
-    height: 100%;
-    opacity: 0.2; 
-    animation: rotarPoco 25s linear infinite alternate; /* Aplicamos animación de rotación */
-}
-
-
-.background-image-04 { /* Corresponde a imagen-gol-maradona-campeonato-4.webp */
-    position: fixed;
-    top: 65%;
-    left: 70%;
-    z-index: -2;
-    width: auto;
-    opacity: 1;
-    height: 100%;
-    animation: oscilarArribaAbajo 22s ease-in-out infinite alternate; /* Aplicamos animación */
+    position: relative;     /* Necesario para las imágenes de fondo */
+    overflow: hidden;       /* Evita que las imágenes animadas causen scroll */
 }
 
 h1 {
-    text-transform: uppercase;
-    color: rgb(48, 46, 46);
-    font-size: 150px;
     font-family: 'Six Caps', sans-serif;
-    text-align: center;
+    font-size: 18vw; /* Tamaño relativo al ANCHO de pantalla */
+    color: rgb(48, 46, 46);
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 20px;
 }
 
 .contenedor-frase {
-    width: 60%;
-    height: 350px;
-    border-radius: 10px;
-
+    width: 90vw; /* Ocupa el 90% del ancho */
+    height: auto; /* La altura la da el contenido (la frase) */
+    margin-bottom: 30px; /* Espacio antes del botón */
 }
 
 p {
-    font-size: 35px;
-    text-align: center;
-    font-family: 'Newsreader', serif;
-    font-weight: 400;
-    margin-top: 20px;
-    padding: 10px;
+    font-size: 24px; /* Tamaño legible en mobile */
+    font-weight: 500;
+    padding: 20px;
     border-radius: 10px;
+    /* Aumenté la opacidad para mejorar legibilidad */
+    background-color: rgba(255, 255, 255, 0.9); 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra sutil */
 }
 
-
 button {
-    display: block;
-    background-color: rgb(48, 46, 46);
-    border: none;
     font-family: 'Six Caps', sans-serif;
-    color: white;
-    width: 150px;
     font-size: 30px;
-    padding: 10px;
+    width: 250px;
+    max-width: 80vw; /* Evita que sea más grande que la pantalla */
+    padding: 12px;
+    border: none;
     border-radius: 10px;
-    margin: 0 auto;
-    margin-top: 10px;
-    transition: all 0.3s ease; 
+    background-color: rgb(48, 46, 46);
+    color: white;
     text-transform: uppercase;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 button:hover {
     background-color: black;
-    transform: scale(1.03); 
-    color: rgb(48, 46, 46); /* Corregido de 'white(48, 46, 46)' a 'rgb(48, 46, 46)' o 'white' */
+    transform: scale(1.03);
+    /* Tu color en 'hover' original estaba mal escrito, */
+    /* si quieres que el texto cambie a gris: */
+    /* color: rgb(48, 46, 46); */
 }
 
+/* --- Imágenes de Fondo (Mobile) --- */
+/* En mobile, las imágenes fijas son muy problemáticas.
+  Ocupan mucho espacio y tapan el contenido.
+  Las ocultamos por defecto para priorizar el contenido.
+*/
+.background-image-01,
+.background-image-02,
+.background-image-03,
+.background-image-04 {
+    display: none; /* OCULTAS en mobile */
+    position: fixed;
+    z-index: -1;
+    /* Aplicamos un filtro para que no distraigan tanto */
+    filter: opacity(0.3) grayscale(50%);
+    animation-duration: 20s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+
+/* ======================================= */
+/* --- ESTILOS DESKTOP (TABLET Y MÁS) --- */
+/* ======================================= */
+
+/* Usamos min-width: 1024px.
+  Estos estilos se APLICARÁN ADEMÁS de los de mobile,
+  solo si la pantalla mide 1024px o MÁS.
+*/
+@media screen and (min-width: 1024px) {
+
+    h1 {
+        font-size: 150px; /* Ahora sí, un tamaño fijo grande */
+        margin-bottom: 10px;
+    }
+
+    .contenedor-frase {
+        width: 60vw; /* Más ancho en desktop */
+        max-width: 800px; /* Pero con un límite */
+        height: auto; /* Sigue siendo automático */
+        margin-top: 20px;
+    }
+
+    p {
+        font-size: 38px; /* Fuente más grande para la frase */
+        font-weight: 400;
+    }
+
+    button {
+        width: 200px;
+        font-size: 35px;
+        margin-top: 20px;
+    }
+
+    /* --- Imágenes de Fondo (Desktop) --- */
+    /* Ahora sí las mostramos (display: block)
+      y las posicionamos, ya que tenemos espacio.
+    */
+
+    .background-image-01 {
+        display: block;
+        top: 60%;
+        left: 15%; /* Ajustado */
+        height: 80%;
+        width: auto;
+        animation-name: oscilarArribaAbajo;
+    }
+
+    .background-image-02 {
+        display: block;
+        top: 60%;
+        left: 85%; /* Ajustado */
+        transform: translate(-50%, -50%);
+        height: 80%;
+        width: auto;
+        animation-name: oscilarArribaAbajo;
+        animation-direction: alternate-reverse;
+        animation-duration: 18s;
+    }
+
+    .background-image-03 { /* tapa.png */
+        display: block;
+        top: 50%;
+        left: 20%;
+        transform: translate(-50%, -50%) rotate(-10deg);
+        height: 100%;
+        width: auto;
+        filter: opacity(0.15) grayscale(20%); /* Más sutil */
+        z-index: -2;
+        animation-name: rotarPoco;
+        animation-duration: 25s;
+    }
+
+    .background-image-04 { /* imagen-gol */
+        display: block;
+        top: 55%;
+        left: 75%;
+        transform: translate(-50%, -50%) rotate(10deg);
+        height: 90%;
+        width: auto;
+        filter: opacity(0.4) grayscale(0%);
+        z-index: -1;
+        animation-name: oscilarArribaAbajo;
+        animation-duration: 22s;
+    }
 }
