@@ -9,18 +9,32 @@ function translateText(project, language) {
             german: "Das Projekt konzentriert sich darauf, zufällige Zitate von Diego Armando Maradona auf einer Webseite anzuzeigen. Es wurde eine JavaScript-Funktion implementiert, die zufällig eine der berühmten Phrasen des legendären argentinischen Fußballers auswählt und sie dynamisch in einem HTML-Element anzeigt. Diese Sätze repräsentieren ikonische und unvergessliche Ausdrücke aus Diegos Erbe."
         },
         clasico: {
-            english: "This personal project, originally started in JavaScript, was rewritten and scaled using Laravel and Breeze to strengthen its backend and functionalities. The idea of a simple match filter evolved into a deep research project. This new stage involved compiling and loading a detailed database. The platform allows users to filter by date, tournament, and stadium, offering a unique level of detail to analyze the intense rivalry between Gimnasia and Estudiantes.",
-            german: "Dieses persönliche Projekt, das ursprünglich in JavaScript gestartet wurde, wurde mit Laravel und Breeze neu geschrieben und skaliert, um sein Backend und seine Funktionalitäten zu stärken. Die Idee eines einfachen Match-Filters entwickelte sich zu einem tiefgreifenden Forschungsprojekt. Diese neue Phase umfasste das Sammeln und Laden einer detaillierten Datenbank. Die Plattform ermöglicht es Benutzern, nach Datum, Turnier und Stadion zu filtern, und bietet so einen einzigartigen Detaillierungsgrad, um die intensive Rivalität zwischen Gimnasia und Estudiantes zu analysieren."
+            english: "This personal project, originally started in JavaScript, was rewritten and scaled using Laravel and Breeze to strengthen its backend and functionalities. The idea of a simple match filter evolved into a deep research project.\n\nThis new stage involved compiling and loading a detailed database. The platform allows users to filter by date, tournament, and stadium, offering a unique level of detail to analyze the intense rivalry between Gimnasia and Estudiantes.",
+            german: "Dieses persönliche Projekt, das ursprünglich in JavaScript begonnen wurde, wurde neu geschrieben und mithilfe von Laravel und Breeze skaliert, um sein Backend und seine Funktionalitäten zu stärken. Die Idee eines einfachen Spielfilters entwickelte sich zu einer tiefgreifenden Forschungsarbeit.\n\nDiese neue Phase umfasste die Sammlung und das Laden einer detaillierten Datenbank. Die Plattform ermöglicht es den Benutzern, nach Datum, Turnier und Stadion zu filtern und bietet so einen einzigartigen Detaillierungsgrad, um die intensive Rivalität zwischen Gimnasia und Estudiantes zu analysieren."
         },
         inmobiliaria: {
             english: "This project is a professional website for a real estate agency, developed entirely from scratch. I used the Laravel ecosystem for the backend, implementing Laravel Breeze to securely manage user registration, login, and profiles. The frontend was built with Blade templates and custom CSS, achieving a professional and mobile-responsive design. I handled the entire process, from local development to the final configuration and deployment in production.",
-            german: "Dieses Projekt ist eine professionelle Website für eine Immobilienagentur, die vollständig von Grund auf neu entwickelt wurde. Ich habe das Laravel-Ökosystem für das Backend verwendet und Laravel Breeze implementiert, um die Benutzerregistrierung, Anmeldung und Profile sicher zu verwalten. Das Frontend wurde mit Blade-Vorlagen und benutzerdefiniertem CSS erstellt, wodurch ein professionelles und mobil-responsives Design erreicht wurde. Ich habe den gesamten Prozess übernommen, von der lokalen Entwicklung bis zur endgültigen Konfiguration und Bereitstellung in der Produktionsumgebung."
+            german: "Dieses Projekt ist eine professionelle Website für eine Immobilienagentur, die vollständig von Grund auf neu entwickelt wurde. Ich habe das Laravel-Ökosystem für das Backend verwendet und Laravel Breeze implementiert, um die Benutzerregistrierung, Anmeldung und Profile sicher zu verwalten. Das Frontend wurde mit Blade-Vorlagen und benutzerdefiniertem CSS erstellt, wodurch ein professionelles und mobil-responsives Design erreicht wurde. Ich habe den gesamten Prozess übernommen, von der lokalen Entwicklung bis zur endgültigen Konfigurierung und Bereitstellung in der Produktionsumgebung."
         }
     };
 
+    if (!translations[project]) {
+        console.error(`Error: No se encontraron traducciones para el proyecto "${project}".`);
+        return;
+    }
+
+    const translatedText = translations[project][language];
+
+    if (!translatedText) {
+        console.error(`Error: No se encontró el idioma "${language}" para el proyecto "${project}".`);
+        return;
+    }
+
     const textElement = document.querySelector(`.proyecto-${project} p`);
+
     if (textElement) {
-        // Reemplaza el contenido del *primer* párrafo encontrado
-        textElement.innerHTML = translations[project][language]; 
+        textElement.innerHTML = translatedText;
+    } else {
+        console.warn(`Advertencia: No se encontró el elemento ".proyecto-${project} p" en el DOM.`);
     }
 }
