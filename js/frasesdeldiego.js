@@ -27,7 +27,8 @@ const frasesMaradona = [
     "Yo no soy ningún mago: los magos son los que están en Fiorito porque viven con mil pesos por mes",
     "Tus decisiones le cagaron la vida a las próximas dos generaciones de argentinos. Hacete cargo, querido. Ya lo dijo tu padre...",
     "¿Me van a contar a mí cómo es Juan Simón? Lo conozco hace diez años. Es capaz de tomarle la leche al gato",
-    "Si el país no llega al arco contrario, tenemos que hacer cambios, aunque sea al Presidente"
+    "Si el país no llega al arco contrario, tenemos que hacer cambios, aunque sea al Presidente",
+    "Tampoco muerto encontraría paz. Me utilizan en vida, y encontrarán el momento de hacerlo estando muerto"
 ];
 
 function cambiarFrase() {
