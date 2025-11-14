@@ -40,10 +40,9 @@
   
   .navlist a:hover {
     transition: all 0.1s ease;
-    color: rgb(22, 22, 22);
-  
-       
+    color: #666666;
   }
+
   .navlist.open {
     right: 0;
     transition: all 0.55s ease;
@@ -99,4 +98,5 @@
        } 
    
    
+
   }
