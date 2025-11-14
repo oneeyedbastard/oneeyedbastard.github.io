@@ -18,39 +18,28 @@ a {
     color: inherit;
 }
 
-/* --- Keyframes mejorados --- */
+/* --- Keyframes --- */
 @keyframes float {
     0%, 100% { 
         transform: translateY(0) rotate(0deg); 
     }
     50% { 
-        transform: translateY(-20px) rotate(1deg); 
+        transform: translateY(-10px) rotate(0.5deg); 
     }
 }
 
 @keyframes pulse {
     0%, 100% { 
-        opacity: 0.6; 
+        opacity: 0.4; 
     }
     50% { 
-        opacity: 0.9; 
+        opacity: 0.7; 
     }
 }
 
 @keyframes slideInFromLeft {
     0% { 
-        transform: translateX(-100%); 
-        opacity: 0; 
-    }
-    100% { 
-        transform: translateX(0); 
-        opacity: 1; 
-    }
-}
-
-@keyframes slideInFromRight {
-    0% { 
-        transform: translateX(100%); 
+        transform: translateX(-50px); 
         opacity: 0; 
     }
     100% { 
@@ -81,20 +70,20 @@ a {
     0%, 100% { 
         transform: translateX(0); 
     }
-    10%, 30%, 50%, 70%, 90% { 
-        transform: translateX(-5px); 
+    25% { 
+        transform: translateX(-3px); 
     }
-    20%, 40%, 60%, 80% { 
-        transform: translateX(5px); 
+    75% { 
+        transform: translateX(3px); 
     }
 }
 
 @keyframes glow {
     0%, 100% { 
-        text-shadow: 3px 3px 0 #8b0000, 6px 6px 0 rgba(0, 0, 0, 0.5); 
+        text-shadow: 2px 2px 0 #8b0000; 
     }
     50% { 
-        text-shadow: 3px 3px 0 #ff0000, 6px 6px 10px rgba(255, 0, 0, 0.3); 
+        text-shadow: 2px 2px 5px rgba(255, 0, 0, 0.5); 
     }
 }
 
@@ -103,14 +92,18 @@ a {
         transform: translateY(0); 
     }
     40% { 
-        transform: translateY(-10px); 
+        transform: translateY(-5px); 
     }
     60% { 
-        transform: translateY(-5px); 
+        transform: translateY(-3px); 
     }
 }
 
-/* --- Fondo con gradientes animados --- */
+/* ======================================= */
+/* --- MOBILE FIRST STYLES --- */
+/* ======================================= */
+
+/* --- Fondo con gradientes --- */
 .background-layer {
     position: fixed;
     top: 0;
@@ -119,118 +112,103 @@ a {
     height: 100%;
     z-index: -3;
     background: 
-        radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(0, 150, 255, 0.1) 0%, transparent 50%);
-    animation: pulse 15s ease-in-out infinite;
+        radial-gradient(circle at 10% 90%, rgba(255, 215, 0, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 10%, rgba(255, 0, 0, 0.08) 0%, transparent 40%);
+    animation: pulse 20s ease-in-out infinite;
 }
 
-/* --- Contenedor principal --- */
+/* --- Contenedor principal Mobile --- */
 .main-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 20px;
+    padding: 15px;
     text-align: center;
     position: relative;
     overflow: hidden;
 }
 
-/* --- Imágenes de fondo --- */
+/* --- Imágenes de fondo Mobile --- */
 .background-image {
     position: fixed;
     z-index: -2;
-    opacity: 0.4;
-    filter: sepia(30%) brightness(80%);
-    animation-duration: 30s;
+    opacity: 0.3;
+    filter: sepia(40%) brightness(70%);
+    animation-duration: 25s;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+    display: none; /* Ocultas en mobile por defecto */
 }
 
+/* Mostrar solo 2 imágenes en mobile para mejor performance */
 .bg-1 {
-    top: 10%;
+    display: block;
+    top: 15%;
     left: 5%;
-    width: 30%;
+    width: 40%;
     height: auto;
     animation-name: float;
 }
 
 .bg-2 {
-    top: 5%;
-    right: 5%;
-    width: 25%;
-    height: auto;
-    animation-name: float;
-    animation-delay: 2s;
-    animation-duration: 25s;
-}
-
-.bg-3 {
+    display: block;
     bottom: 10%;
-    left: 10%;
-    width: 20%;
-    height: auto;
-    animation-name: pulse;
-    animation-duration: 15s;
-}
-
-.bg-4 {
-    bottom: 5%;
-    right: 10%;
+    right: 5%;
     width: 35%;
     height: auto;
     animation-name: float;
-    animation-delay: 5s;
-    animation-duration: 35s;
+    animation-delay: 3s;
+    animation-duration: 20s;
 }
 
-/* --- Estilos del título --- */
+/* --- Título Mobile --- */
 h1 {
     font-family: 'Six Caps', sans-serif;
-    font-size: 18vw;
+    font-size: 15vw;
     color: #ffd700;
     text-transform: uppercase;
-    line-height: 1;
-    margin-bottom: 20px;
-    text-shadow: 3px 3px 0 #8b0000, 6px 6px 0 rgba(0, 0, 0, 0.5);
-    letter-spacing: 2px;
-    animation: slideInFromLeft 1.5s ease-out, glow 3s ease-in-out infinite;
+    line-height: 0.9;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 0 #8b0000;
+    letter-spacing: 1px;
+    animation: slideInFromLeft 1s ease-out;
     transition: transform 0.3s ease;
+    padding: 0 10px;
 }
 
 h1:hover {
-    transform: scale(1.05);
-    animation: slideInFromLeft 1.5s ease-out, glow 1.5s ease-in-out infinite, bounce 1s;
+    transform: scale(1.03);
 }
 
-/* --- Contenedor de frase --- */
+/* --- Contenedor de frase Mobile --- */
 .contenedor-frase {
-    width: 90vw;
+    width: 95vw;
     margin-bottom: 30px;
-    perspective: 1000px;
+    perspective: 500px;
 }
 
 p {
-    font-size: 24px;
-    font-weight: 500;
-    padding: 25px;
-    border-radius: 15px;
-    background: rgba(20, 20, 20, 0.85);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 215, 0, 0.3);
-    animation: fadeIn 1s ease-out;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 20px 15px;
+    border-radius: 12px;
+    background: rgba(25, 25, 25, 0.9);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    animation: fadeIn 0.8s ease-out;
     position: relative;
     overflow: hidden;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    line-height: 1.4;
 }
 
 p:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.15);
 }
 
 p::before {
@@ -240,37 +218,37 @@ p::before {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
-    transition: left 0.5s;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.15), transparent);
+    transition: left 0.6s;
 }
 
 p:hover::before {
     left: 100%;
 }
 
-/* --- Botón --- */
+/* --- Botón Mobile --- */
 .contenedor-boton {
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 button {
     font-family: 'Six Caps', sans-serif;
-    font-size: 30px;
-    width: 250px;
-    max-width: 80vw;
-    padding: 15px 25px;
+    font-size: 24px;
+    width: 220px;
+    max-width: 85vw;
+    padding: 12px 20px;
     border: none;
-    border-radius: 50px;
+    border-radius: 40px;
     background: linear-gradient(45deg, #8b0000, #ff0000);
     color: white;
     text-transform: uppercase;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(139, 0, 0, 0.4);
+    box-shadow: 0 3px 10px rgba(139, 0, 0, 0.3);
     position: relative;
     overflow: hidden;
-    letter-spacing: 1px;
-    animation: fadeIn 2s ease-out;
+    letter-spacing: 0.5px;
+    animation: fadeIn 1.5s ease-out;
 }
 
 button::before {
@@ -280,13 +258,13 @@ button::before {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     transition: left 0.5s;
 }
 
 button:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(139, 0, 0, 0.6);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(139, 0, 0, 0.4);
     background: linear-gradient(45deg, #ff0000, #ff4500);
 }
 
@@ -296,15 +274,259 @@ button:hover::before {
 
 button:active {
     transform: translateY(0);
-    box-shadow: 0 5px 10px rgba(139, 0, 0, 0.4);
+    box-shadow: 0 3px 8px rgba(139, 0, 0, 0.3);
 }
 
-/* --- Elementos decorativos --- */
+/* --- Elementos decorativos Mobile --- */
 .decoration {
     position: fixed;
     z-index: -1;
     pointer-events: none;
+    display: none; /* Ocultos en mobile */
 }
 
-.c
+.number-10 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Six Caps', sans-serif;
+    font-size: 50vw;
+    color: rgba(255, 215, 0, 0.03);
+    z-index: -1;
+    pointer-events: none;
+    animation: pulse 15s ease-in-out infinite;
+}
 
+/* --- Animación para nueva frase --- */
+.new-frase {
+    animation: shake 0.4s ease-in-out, fadeIn 0.8s ease-out;
+}
+
+/* ======================================= */
+/* --- TABLET STYLES (768px+) --- */
+/* ======================================= */
+@media screen and (min-width: 768px) {
+    .main-container {
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 12vw;
+        margin-bottom: 30px;
+    }
+
+    .contenedor-frase {
+        width: 80vw;
+        max-width: 600px;
+    }
+
+    p {
+        font-size: 22px;
+        padding: 25px 20px;
+    }
+
+    button {
+        font-size: 28px;
+        width: 200px;
+        padding: 14px 22px;
+    }
+
+    .background-image {
+        opacity: 0.35;
+    }
+
+    .number-10 {
+        font-size: 40vw;
+    }
+}
+
+/* ======================================= */
+/* --- DESKTOP STYLES (1024px+) --- */
+/* ======================================= */
+@media screen and (min-width: 1024px) {
+    .main-container {
+        padding: 30px;
+    }
+
+    h1 {
+        font-size: 120px;
+        margin-bottom: 40px;
+        text-shadow: 3px 3px 0 #8b0000, 6px 6px 0 rgba(0, 0, 0, 0.3);
+        animation: slideInFromLeft 1.5s ease-out, glow 4s ease-in-out infinite;
+    }
+
+    h1:hover {
+        transform: scale(1.05);
+        animation: slideInFromLeft 1.5s ease-out, glow 2s ease-in-out infinite, bounce 1s;
+    }
+
+    .contenedor-frase {
+        width: 70vw;
+        max-width: 800px;
+        margin-bottom: 40px;
+        perspective: 1000px;
+    }
+
+    p {
+        font-size: 28px;
+        font-weight: 400;
+        padding: 30px 25px;
+        border-radius: 15px;
+        background: rgba(20, 20, 20, 0.85);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 215, 0, 0.3);
+        backdrop-filter: blur(10px);
+        line-height: 1.5;
+    }
+
+    p:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(255, 215, 0, 0.2);
+    }
+
+    button {
+        font-size: 32px;
+        width: 220px;
+        padding: 15px 25px;
+        border-radius: 50px;
+        box-shadow: 0 5px 15px rgba(139, 0, 0, 0.4);
+    }
+
+    button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(139, 0, 0, 0.5);
+    }
+
+    /* --- Imágenes de fondo Desktop --- */
+    .background-image {
+        display: block;
+        opacity: 0.4;
+        filter: sepia(30%) brightness(80%);
+        animation-duration: 30s;
+    }
+
+    .bg-1 {
+        top: 10%;
+        left: 5%;
+        width: 25%;
+    }
+
+    .bg-2 {
+        top: 5%;
+        right: 5%;
+        width: 20%;
+        bottom: auto;
+    }
+
+    .bg-3 {
+        display: block;
+        bottom: 10%;
+        left: 10%;
+        width: 18%;
+        animation-name: float;
+        animation-delay: 4s;
+        animation-duration: 22s;
+    }
+
+    .bg-4 {
+        display: block;
+        bottom: 5%;
+        right: 10%;
+        width: 30%;
+        animation-name: float;
+        animation-delay: 6s;
+        animation-duration: 28s;
+    }
+
+    /* --- Fondo mejorado Desktop --- */
+    .background-layer {
+        background: 
+            radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 40% 40%, rgba(0, 150, 255, 0.08) 0%, transparent 50%);
+    }
+
+    /* --- Elementos decorativos Desktop --- */
+    .decoration {
+        display: block;
+    }
+
+    .circle-1 {
+        top: 20%;
+        left: 8%;
+        width: 80px;
+        height: 80px;
+        border: 2px solid rgba(255, 215, 0, 0.2);
+        border-radius: 50%;
+        animation: rotateSlow 25s linear infinite;
+    }
+
+    .circle-2 {
+        bottom: 25%;
+        right: 10%;
+        width: 120px;
+        height: 120px;
+        border: 2px dashed rgba(255, 0, 0, 0.2);
+        border-radius: 50%;
+        animation: rotateSlow 30s linear infinite reverse;
+    }
+
+    .number-10 {
+        font-size: 400px;
+        color: rgba(255, 215, 0, 0.04);
+    }
+}
+
+/* ======================================= */
+/* --- LARGE DESKTOP STYLES (1440px+) --- */
+/* ======================================= */
+@media screen and (min-width: 1440px) {
+    h1 {
+        font-size: 140px;
+    }
+
+    .contenedor-frase {
+        max-width: 900px;
+    }
+
+    p {
+        font-size: 32px;
+        padding: 35px 30px;
+    }
+
+    .background-image {
+        opacity: 0.45;
+    }
+
+    .bg-1, .bg-2, .bg-3, .bg-4 {
+        width: 20%;
+    }
+
+    .number-10 {
+        font-size: 500px;
+    }
+}
+
+/* ======================================= */
+/* --- ACCESSIBILITY & PERFORMANCE --- */
+/* ======================================= */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Mejora de contraste para accesibilidad */
+@media (prefers-contrast: high) {
+    p {
+        background: rgba(10, 10, 10, 0.95);
+        border: 2px solid #ffd700;
+    }
+    
+    button {
+        background: #8b0000;
+    }
+}
