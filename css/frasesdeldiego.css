@@ -4,58 +4,73 @@
     box-sizing: border-box;
 }
 
-.background-image-01 {
+/* ⚽ Estilos de Imágenes de Fondo (Collage) */
+.background-image-01,
+.background-image-02,
+.background-image-03,
+.background-image-04 {
     position: fixed;
+    z-index: -10; /* Asegura que todas estén detrás del contenido */
+    object-fit: contain; /* Asegura que la imagen se vea completa */
+    transition: transform 1s ease-out; /* Prepara para posibles efectos de paralaje */
+}
+
+.background-image-01 {
     top: 70%;
     left: 40%;
     transform: translate(-50%, -50%);
-    z-index: -1;
-    width: auto;
-    height: 70%;    
+    height: 70%;
+    z-index: -5; 
 }
 
 .background-image-02 {
-    position: fixed;
     top: 80%;
     left: 100%;
     transform: translate(-50%, -50%);
-    z-index: -1;
-    width: auto;
-    height: 60%;    
+    height: 60%;
+    z-index: -4; 
 }
-
 
 .background-image-03 {
-    position: fixed;
     top: 60%;
     left: 20%;
-    transform: translate(-50%, -50%) rotate(-10deg); /* Rotar hacia la izquierda */
-    z-index: -5;
-    width: auto;
+    /* Efecto de sombra con baja opacidad */
+    transform: translate(-50%, -50%) rotate(-10deg); 
+    z-index: -7; /* Más atrás */
     height: 100%;
-    opacity: 0.2; /* Cambiar la opacidad a casi transparente (0.3 es un valor entre 0 y 1) */
+    opacity: 0.15; /* Aún más transparente */
+    filter: blur(2px); /* Ligeramente borroso para profundidad */
 }
 
-
 .background-image-04 {
-    position: fixed;
     top: 35%;
     left: 100%;
     transform: translate(-50%, -50%) rotate(10deg); 
-    z-index: -3;
-    width: auto;
+    z-index: -6;
     height: 80%;
-    opacity: 0.9;
+    opacity: 0.8;
 }
 
+/* 👑 Título Principal (Efecto Novedoso: Texto Stroke) */
 h1 {
     text-transform: uppercase;
-    color: rgb(48, 46, 46);
+    /* Relleno transparente, color de borde (stroke) */
+    color: transparent; 
+    -webkit-text-stroke: 3px rgb(48, 46, 46); /* Borde para navegadores WebKit */
+    text-stroke: 3px rgb(48, 46, 46);
+    
     font-size: 250px;
     font-family: 'Six Caps', sans-serif;
     text-align: center;
+    line-height: 0.8; /* Ajusta el espacio entre líneas si es multilínea */
+    margin-top: 50px;
 }
 
+a {
+    text-decoration: none;
+}
+
+/* 🗣️ Contenedor y Frase (Efecto Vidrio Esmerilado) */
 .contenedor-frase {
     margin: 0 auto;
     margin-top: 30px;
@@ -63,25 +78,30 @@ h1 {
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 80vw;
-    height: 900px;
-}
-a {
-    text-decoration: none;
+    width: 90vw; /* Aumentado para mejor uso en móvil */
+    /* Altura ajustada, mejor usar min-height para que crezca con el contenido */
+    min-height: 300px; 
 }
 
 p {
     font-size: 65px;
     text-align: center;
     font-family: 'Newsreader', serif;
-    font-weight: 400;
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.726);
+    font-weight: 500; /* Ligeramente más grueso */
+    padding: 30px;
+    border-radius: 15px;
+    /* Efecto de Vidrio Esmerilado */
+    background-color: rgba(255, 255, 255, 0.4); /* Fondo más transparente */
+    backdrop-filter: blur(5px); /* Desenfoque del contenido detrás */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    
+    /* Asegura que el párrafo no se estire a la altura del contenedor si la frase es corta */
+    width: fit-content; 
+    max-width: 90%;
 }
 
 
+/* 🔄 Botón de Cambio */
 button {
     display: block;
     background-color: rgb(48, 46, 46);
@@ -93,111 +113,69 @@ button {
     padding: 10px;
     border-radius: 10px;
     margin: 0 auto;
-    margin-top: 10px;
+    margin-top: 30px; /* Separación aumentada */
     transition: all 0.3s ease; 
     text-transform: uppercase;
     cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra al botón */
 }
 
 button:hover {
-    background-color: black;
-    transform: scale(1.03); 
-    color: white(48, 46, 46);
+    background-color: #0047AB; /* Nuevo color: Azul intenso/Nápoles/Argentina */
+    transform: scale(1.05) translateY(-2px); /* Un poco más de 'lift' */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
+/* 🖥️ Media Query para Desktop (min-width: 1200px) */
 @media screen and (min-width: 1200px) {
 
-.background-image-01 {
-    position: fixed;
-    top: 60%;
-    left: 20%;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-    width: auto;
-    height: 80%;    
-}
+    /* Ajustes para Desktop */
+    .background-image-01 {
+        top: 60%;
+        left: 20%;
+        height: 80%;    
+    }
 
-.background-image-02 {
-    position: fixed;
-    top: 60%;
-    left: 90%;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-    width: auto;
-    height: 80%;    
-}
+    .background-image-02 {
+        top: 60%;
+        left: 90%;
+        height: 80%;    
+    }
 
+    .background-image-03 {
+        top: 60%;
+        left: 20%;
+        height: 100%;
+    }
 
-.background-image-03 {
-    position: fixed;
-    top: 60%;
-    left: 20%;
-    transform: translate(-50%, -50%) rotate(-10deg); /* Rotar hacia la izquierda */
-    z-index: -3;
-    width: auto;
-    height: 100%;
-    opacity: 0.2; /* Cambiar la opacidad a casi transparente (0.3 es un valor entre 0 y 1) */
-}
+    .background-image-04 {
+        top: 65%;
+        left: 75%; /* Ajustado un poco más a la derecha */
+        height: 100%;
+        opacity: 0.9;
+    }
 
+    h1 {
+        -webkit-text-stroke: 2px rgb(48, 46, 46);
+        text-stroke: 2px rgb(48, 46, 46);
+        font-size: 150px;
+        margin-top: 20px;
+    }
 
-.background-image-04 {
-    position: fixed;
-    top: 65%;
-    left: 70%;
-    z-index: -2;
-    width: auto;
-    opacity: 1;
-    height: 100%;
-  
-}
+    .contenedor-frase {
+        width: 60%;
+        height: auto; /* Dejamos que el contenido defina la altura */
+        margin-top: 80px;
+    }
 
-h1 {
-    text-transform: uppercase;
-    color: rgb(48, 46, 46);
-    font-size: 150px;
-    font-family: 'Six Caps', sans-serif;
-    text-align: center;
-}
+    p {
+        font-size: 35px;
+        padding: 20px;
+    }
 
-.contenedor-frase {
-    width: 60%;
-    height: 350px;
-    border-radius: 10px;
-
-}
-
-p {
-    font-size: 35px;
-    text-align: center;
-    font-family: 'Newsreader', serif;
-    font-weight: 400;
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 10px;
-}
-
-
-button {
-    display: block;
-    background-color: rgb(48, 46, 46);
-    border: none;
-    font-family: 'Six Caps', sans-serif;
-    color: white;
-    width: 150px;
-    font-size: 30px;
-    padding: 10px;
-    border-radius: 10px;
-    margin: 0 auto;
-    margin-top: 10px;
-    transition: all 0.3s ease; 
-    text-transform: uppercase;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: black;
-    transform: scale(1.03); 
-    color: white(48, 46, 46);
-}
+    button {
+        width: 180px;
+        font-size: 35px;
+    }
 
 }
