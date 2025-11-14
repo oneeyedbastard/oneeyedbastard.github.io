@@ -1,468 +1,52 @@
-:root {
-    --azul-argentina: #6CACE4;
-    --celeste-argentina: #75AADB;
-    --blanco: #FFFFFF;
-    --negro: #000000;
-    --amarillo: #F9E076;
-    --rojo: #E74C3C;
-    --verde-cesped: #2E8B57;
-    --sombra: 0 10px 30px rgba(0, 0, 0, 0.3);
-    --transicion: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
-    min-height: 100vh;
-    font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden;
-    color: var(--blanco);
-    position: relative;
-}
-
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* Partículas animadas */
-.particles-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    pointer-events: none;
-}
-
-.particle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: var(--amarillo);
-    border-radius: 50%;
-    animation: float 15s infinite linear;
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    90% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-100px) rotate(360deg);
-        opacity: 0;
-    }
-}
-
-/* Elementos de estadio */
-.stadium-elements {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    pointer-events: none;
-}
-
-.field-lines {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        linear-gradient(to right, transparent 49%, rgba(255,255,255,0.1) 49%, rgba(255,255,255,0.1) 51%, transparent 51%),
-        linear-gradient(to bottom, transparent 49%, rgba(255,255,255,0.1) 49%, rgba(255,255,255,0.1) 51%, transparent 51%);
-    opacity: 0.3;
-}
-
-.goal-left, .goal-right {
-    position: absolute;
-    top: 50%;
-    width: 80px;
-    height: 200px;
-    border: 2px solid rgba(255,255,255,0.2);
-    transform: translateY(-50%);
-}
-
-.goal-left {
-    left: 20px;
-    border-right: none;
-}
-
-.goal-right {
-    right: 20px;
-    border-left: none;
-}
-
-/* Contenedor principal */
-.main-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    position: relative;
-    z-index: 1;
-}
-
-/* Header */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-    position: relative;
-}
-
-.back-link {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--blanco);
-    text-decoration: none;
-    font-weight: 600;
-    transition: var(--transicion);
-    padding: 10px 15px;
-    border-radius: 8px;
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
-}
-
-.back-link:hover {
-    background: rgba(255,255,255,0.2);
-    transform: translateX(-5px);
-}
+/* 1. Estilos Base (APLICAN A MÓVILES y small devices) */
 
 h1 {
-    font-family: 'Six Caps', sans-serif;
-    font-size: 5rem;
-    text-align: center;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    color: transparent;
-    background: linear-gradient(135deg, var(--blanco) 0%, var(--amarillo) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-stroke: 2px var(--blanco);
-    text-stroke: 2px var(--blanco);
-    text-shadow: 3px 3px 0px rgba(0,0,0,0.5);
-    animation: titlePulse 3s ease-in-out infinite alternate;
-    flex: 1;
-}
-
-@keyframes titlePulse {
-    0% {
-        transform: scale(1);
-        text-shadow: 3px 3px 0px rgba(0,0,0,0.5);
-    }
-    100% {
-        transform: scale(1.05);
-        text-shadow: 5px 5px 0px rgba(0,0,0,0.7);
-    }
-}
-
-.maradona-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.number-10 {
+    color: rgb(48, 46, 46);
+    /* Tamaño apropiado para móvil */
+    font-size: 80px; 
     font-family: 'Six Caps', sans-serif;
-    font-size: 2.5rem;
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, var(--azul-argentina), var(--celeste-argentina));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--blanco);
-    border: 3px solid var(--amarillo);
-    box-shadow: var(--sombra);
-    animation: rotateNumber 10s linear infinite;
-}
-
-@keyframes rotateNumber {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Contenedor de frase */
-.content {
-    margin-top: 40px;
-}
-
-.quote-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 300px;
-    perspective: 1000px;
-}
-
-.quote-card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
-    border-radius: 20px;
-    padding: 40px;
-    box-shadow: var(--sombra);
-    border: 2px solid rgba(255,255,255,0.3);
-    max-width: 800px;
-    width: 90%;
     text-align: center;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: var(--transicion);
-    animation: cardFloat 6s ease-in-out infinite;
 }
 
-@keyframes cardFloat {
-    0%, 100% { transform: translateY(0px) rotateX(0deg); }
-    50% { transform: translateY(-10px) rotateX(5deg); }
+.contenedor-frase {
+    /* Altura más razonable para móvil */
+    min-height: 250px; 
+    width: 90vw;
 }
 
-.quote-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 5px;
-    background: linear-gradient(90deg, var(--azul-argentina), var(--amarillo), var(--rojo));
-    border-radius: 20px 20px 0 0;
+p {
+    /* Tamaño legible para móvil */
+    font-size: 30px; 
 }
 
-.quote-card:hover {
-    transform: translateY(-15px) rotateX(10deg);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+button {
+    width: 200px;
+    font-size: 40px;
 }
 
-.quote-icon {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    animation: bounce 2s ease-in-out infinite;
-}
+/* 2. Media Query (AGREGA ESTILOS SÓLO PARA ESCRITORIO) */
+@media screen and (min-width: 1200px) {
 
-@keyframes bounce {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-10px) scale(1.1); }
-}
-
-.quote-text {
-    font-family: 'Newsreader', serif;
-    font-size: 2rem;
-    font-weight: 500;
-    color: var(--negro);
-    line-height: 1.4;
-    margin-bottom: 20px;
-    position: relative;
-}
-
-.signature {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--azul-argentina);
-    font-style: italic;
-    position: relative;
-}
-
-.signature::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--azul-argentina), transparent);
-}
-
-/* Botón */
-.button-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
-}
-
-.action-button {
-    background: linear-gradient(135deg, var(--azul-argentina) 0%, var(--celeste-argentina) 100%);
-    border: none;
-    color: var(--blanco);
-    padding: 18px 35px;
-    border-radius: 50px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.3rem;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: var(--sombra);
-    transition: var(--transicion);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    position: relative;
-    overflow: hidden;
-}
-
-.action-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    transition: left 0.7s;
-}
-
-.action-button:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-    background: linear-gradient(135deg, var(--rojo) 0%, #c0392b 100%);
-}
-
-.action-button:hover::before {
-    left: 100%;
-}
-
-.action-button:active {
-    transform: translateY(0) scale(0.98);
-}
-
-.button-text {
-    position: relative;
-    z-index: 1;
-}
-
-.button-icon {
-    font-size: 1.5rem;
-    animation: spin 3s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Imágenes de Maradona */
-.maradona-images {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-}
-
-.maradona-img {
-    position: absolute;
-    object-fit: contain;
-    opacity: 0.15;
-    filter: sepia(1) hue-rotate(180deg) brightness(0.8);
-    transition: var(--transicion);
-}
-
-.img-1 {
-    top: 10%;
-    left: 5%;
-    height: 200px;
-    animation: floatImage 25s ease-in-out infinite;
-}
-
-.img-2 {
-    top: 70%;
-    right: 5%;
-    height: 180px;
-    animation: floatImage 20s ease-in-out infinite reverse;
-}
-
-.img-3 {
-    bottom: 10%;
-    left: 15%;
-    height: 150px;
-    animation: floatImage 30s ease-in-out infinite;
-}
-
-.img-4 {
-    top: 20%;
-    right: 15%;
-    height: 220px;
-    animation: floatImage 22s ease-in-out infinite reverse;
-}
-
-@keyframes floatImage {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg);
-    }
-    33% {
-        transform: translateY(-20px) rotate(5deg);
-    }
-    66% {
-        transform: translateY(10px) rotate(-5deg);
-    }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        gap: 20px;
-    }
-    
     h1 {
-        font-size: 3.5rem;
-        order: -1;
+        /* Se incrementa el tamaño para escritorio */
+        font-size: 250px; 
     }
-    
-    .quote-text {
-        font-size: 1.5rem;
-    }
-    
-    .maradona-img {
-        height: 120px !important;
-        opacity: 0.1;
-    }
-    
-    .number-10 {
-        width: 60px;
-        height: 60px;
-        font-size: 2rem;
-    }
-}
 
-@media (max-width: 480px) {
-    h1 {
-        font-size: 2.8rem;
+    .contenedor-frase {
+        width: 60%;
+        min-height: 350px;
+    }
+
+    p {
+        /* Se incrementa el tamaño del texto de la frase */
+        font-size: 65px; 
+    }
+
+    button {
+        width: 250px;
+        font-size: 45px;
     }
     
-    .quote-card {
-        padding: 25px;
-    }
-    
-    .quote-text {
-        font-size: 1.3rem;
-    }
-    
-    .action-button {
-        padding: 15px 25px;
-        font-size: 1.1rem;
-    }
+    /* El resto de tus estilos de imagen para desktop van aquí */
 }
