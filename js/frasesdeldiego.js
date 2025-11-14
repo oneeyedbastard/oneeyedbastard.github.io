@@ -21,7 +21,13 @@ const frasesMaradona = [
     "Esto te da vida, el fútbol te da vida",
     "Voy a ser Cristinista, hasta los huevos",
     "Mi viejo fue peronista, mi vieja adoraba a Evita, y yo fui, soy, y seré siempre peronista",
-   
+    "Si voy al banco es para sacar plata, fiera",
+    "El juez Bernasconi es muy rápido: es capaz de meterle un supositorio a una liebre",
+    "Quiero ver el sol y acostarme de noche. Antes no quería ni acostarme ni sabía lo que era una almohada",
+    "Yo no soy ningún mago: los magos son los que están en Fiorito porque viven con mil pesos por mes",
+    "Tus decisiones le cagaron la vida a las próximas dos generaciones de argentinos. Hacete cargo, querido. Ya lo dijo tu padre...",
+    "¿Me van a contar a mí cómo es Juan Simón? Lo conozco hace diez años. Es capaz de tomarle la leche al gato",
+    "Si el país no llega al arco contrario, tenemos que hacer cambios, aunque sea al Presidente"
 ];
 
 function cambiarFrase() {
