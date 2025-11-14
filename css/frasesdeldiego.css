@@ -1,3 +1,15 @@
+@keyframes oscilarArribaAbajo {
+    0% { transform: translate(-50%, -50%); }
+    50% { transform: translate(-50%, calc(-50% - 8px)); } /* Se mueve 8px hacia arriba */
+    100% { transform: translate(-50%, -50%); }
+}
+
+@keyframes rotarPoco {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    50% { transform: translate(-50%, -50%) rotate(0.8deg); } /* Rota 0.8 grados */
+    100% { transform: translate(-50%, -50%) rotate(0deg); }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -12,6 +24,7 @@
     z-index: -1;
     width: auto;
     height: 70%;    
+    animation: oscilarArribaAbajo 20s ease-in-out infinite alternate; /* Aplicamos animación */
 }
 
 .background-image-02 {
@@ -22,10 +35,11 @@
     z-index: -1;
     width: auto;
     height: 60%;    
+    animation: oscilarArribaAbajo 18s ease-in-out infinite alternate-reverse; /* Animación inversa */
 }
 
 
-.background-image-03 {
+.background-image-03 { /* Esto en tu HTML original es background-image-03 para tapa.png */
     position: fixed;
     top: 60%;
     left: 20%;
@@ -34,10 +48,11 @@
     width: auto;
     height: 100%;
     opacity: 0.2; 
+    animation: rotarPoco 25s linear infinite alternate; /* Aplicamos animación de rotación */
 }
 
 
-.background-image-04 {
+.background-image-04 { /* Esto en tu HTML original es background-image-04 para imagen-gol-maradona-campeonato-4.webp */
     position: fixed;
     top: 35%;
     left: 100%;
@@ -46,6 +61,7 @@
     width: auto;
     height: 80%;
     opacity: 0.9;
+    animation: oscilarArribaAbajo 22s ease-in-out infinite alternate; /* Aplicamos animación */
 }
 
 h1 {
@@ -102,7 +118,7 @@ button {
 button:hover {
     background-color: black;
     transform: scale(1.03); 
-    color: white(48, 46, 46);
+    color: rgb(48, 46, 46); /* Corregido de 'white(48, 46, 46)' a 'rgb(48, 46, 46)' o 'white' */
 }
 
 @media screen and (min-width: 1200px) {
@@ -115,6 +131,7 @@ button:hover {
     z-index: -1;
     width: auto;
     height: 80%;    
+    animation: oscilarArribaAbajo 20s ease-in-out infinite alternate; /* Aplicamos animación */
 }
 
 .background-image-02 {
@@ -125,10 +142,11 @@ button:hover {
     z-index: -1;
     width: auto;
     height: 80%;    
+    animation: oscilarArribaAbajo 18s ease-in-out infinite alternate-reverse; /* Animación inversa */
 }
 
 
-.background-image-03 {
+.background-image-03 { /* Corresponde a tapa.png */
     position: fixed;
     top: 60%;
     left: 20%;
@@ -137,10 +155,11 @@ button:hover {
     width: auto;
     height: 100%;
     opacity: 0.2; 
+    animation: rotarPoco 25s linear infinite alternate; /* Aplicamos animación de rotación */
 }
 
 
-.background-image-04 {
+.background-image-04 { /* Corresponde a imagen-gol-maradona-campeonato-4.webp */
     position: fixed;
     top: 65%;
     left: 70%;
@@ -148,7 +167,7 @@ button:hover {
     width: auto;
     opacity: 1;
     height: 100%;
-  
+    animation: oscilarArribaAbajo 22s ease-in-out infinite alternate; /* Aplicamos animación */
 }
 
 h1 {
@@ -197,7 +216,7 @@ button {
 button:hover {
     background-color: black;
     transform: scale(1.03); 
-    color: white(48, 46, 46);
+    color: rgb(48, 46, 46); /* Corregido de 'white(48, 46, 46)' a 'rgb(48, 46, 46)' o 'white' */
 }
 
-} 
+}
