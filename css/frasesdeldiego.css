@@ -26,30 +26,38 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    transition: background-color 0.3s, color 0.3s; 
+    transition: all 0.4s ease-in-out; 
 }
 
 body {
-    background-color: #f7f7f7;
+    /* Fondo con degradado sutil (cielo/campo) */
+    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+    min-height: 100vh;
 }
 
 a {
     text-decoration: none;
 }
 
+/* 🏆 Título Principal (Más legible y vistoso) */
 h1 {
     text-transform: uppercase;
     font-family: 'Six Caps', sans-serif;
     text-align: center;
     line-height: 0.9;
     padding: 20px 0 10px;
-    color: transparent; 
-    -webkit-text-stroke: 1px #0047AB; 
-    text-stroke: 1px #0047AB;
+    
+    /* Color de relleno (Blanco) y Stroke (Gris Oscuro/Negro) */
+    color: #ffffff; 
+    -webkit-text-stroke: 2px #1a1a1a; 
+    text-stroke: 2px #1a1a1a;
     font-size: 80px; 
-    text-shadow: 2px 2px 0 #302e2e;
+    
+    /* Sombra dramática y sutilmente azulada */
+    text-shadow: 4px 4px 0px rgba(0, 71, 171, 0.5); 
 }
 
+/* 🗣️ Contenedor y Frase (Más foco y contraste) */
 .contenedor-frase {
     margin: 0 auto;
     margin-top: 30px;
@@ -67,39 +75,45 @@ p {
     font-weight: 500;
     padding: 25px;
     border-radius: 15px;
-    background-color: rgba(255, 255, 255, 0.4); 
-    backdrop-filter: blur(8px); 
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1); 
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); 
+    
+    /* Estilo Glassmorphism mejorado */
+    background-color: rgba(255, 255, 255, 0.6); /* Más opaco */
+    backdrop-filter: blur(10px); /* Más desenfoque */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.2); /* Sombra más fuerte */
+    
+    color: #1a1a1a; /* Texto oscuro para alto contraste */
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5); /* Sombra clara sutil */
     width: fit-content; 
     max-width: 90%;
 }
 
+/* 🔄 Botón de Cambio (Estilo Insignia Vibrante) */
 button {
     display: block;
-    background-color: #0047AB; 
-    border: none;
+    background-color: #0047AB; /* Azul vibrante */
+    border: 3px solid #ffffff; /* Borde blanco para resaltar */
     font-family: 'Six Caps', sans-serif;
     color: white;
     width: 200px;
     font-size: 40px;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 12px;
     margin: 0 auto;
-    margin-top: 30px;
-    transition: all 0.3s ease; 
+    margin-top: 40px;
     text-transform: uppercase;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); 
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5); /* Sombra de elevación */
 }
 
 button:hover {
-    background-color: #302e2e; 
-    transform: scale(1.05) translateY(-2px); 
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+    background-color: #1a1a1a; /* Negro en hover para impacto */
+    border: 3px solid #0047AB; /* Borde azul en hover */
+    transform: scale(1.08) translateY(-3px); 
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.8);
 }
 
+/* 🖼️ Imágenes de Fondo (Ajustes de Opacidad) */
 .background-image-01,
 .background-image-02,
 .background-image-03,
@@ -123,7 +137,7 @@ button:hover {
     transform: translate(-50%, -50%);
     height: 50%;
     z-index: -4; 
-    opacity: 0.9;
+    opacity: 0.8;
     animation: oscilarFondo 15s ease-in-out infinite alternate-reverse; 
 }
 
@@ -132,8 +146,8 @@ button:hover {
     transform: translate(-50%, -50%) rotate(-10deg); 
     z-index: -7; 
     height: 90%;
-    opacity: 0.1;
-    filter: blur(1px); 
+    opacity: 0.05; /* Casi invisible, solo una textura fantasma */
+    filter: blur(2px); /* Más desenfoque */
     animation: rotarSuave 25s linear infinite alternate;
 }
 
@@ -141,15 +155,16 @@ button:hover {
     display: none; 
 }
 
+/* =======================================
+   MEDIA QUERY (DESKTOP: min-width: 1200px)
+   ======================================= */
 @media screen and (min-width: 1200px) {
 
     h1 {
-        -webkit-text-stroke: 2px #302e2e;
-        text-stroke: 2px #302e2e;
-        text-shadow: 
-            -3px -3px 0 #fff, 
-            -4px -4px 0 #302e2e,
-             4px 4px 0 #302e2e;
+        /* Estilo Desktop: Borde más grueso y sombra más definida */
+        -webkit-text-stroke: 3px #1a1a1a;
+        text-stroke: 3px #1a1a1a;
+        text-shadow: 6px 6px 0px rgba(0, 71, 171, 0.5);
         font-size: 250px; 
     }
 
@@ -165,9 +180,9 @@ button:hover {
     }
 
     button {
-        width: 280px;
-        font-size: 50px;
-        margin-top: 40px;
+        width: 300px;
+        font-size: 55px;
+        margin-top: 50px;
     }
     
     .background-image-04 {
