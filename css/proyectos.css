@@ -76,11 +76,6 @@ p {
   text-align: center;
 }
 
-h2 a:hover {
-  color: rgb(0, 0, 0); 
-  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.322);
-}
-
 .cuadrado-negro {
   width: 100vw;
   height: 100vh;
@@ -160,3 +155,4 @@ h2 a:hover {
   }
 
 }
+
