@@ -41,20 +41,17 @@ const frasesMaradona = [
     "Creeme que me cortaron las piernas…"
 ];
 
-const frasesMaradona = [
-    // ... (tu lista original de frases va aquí)
-    "La pelota no se mancha",
-    "Dios me iluminó en ese momento",
-    // ... etc
-    "Miren que me han puesto apodos pero 'Pelusa' es el que más va conmigo..."
-];
+// Eliminé el array duplicado que tenías
 
 // 1. Creamos nuestro "mazo" de frases disponibles
 let frasesDisponibles = [];
+let fraseActual = "";
+let frasesMostradas = [];
+let modoAleatorio = false;
 
 // 2. Función para barajar el mazo original y llenar el mazo disponible
 function barajarFrases() {
-    // Copiamos el array original y lo mezclamos (algoritmo Fisher-Yates)
+    // Copiamos el array original y lo mezclamos (algoritmo Fisher-Yates mejorado)
     let mazoTemporal = [...frasesMaradona];
     for (let i = mazoTemporal.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -63,18 +60,188 @@ function barajarFrases() {
     frasesDisponibles = mazoTemporal;
 }
 
-function cambiarFrase() {
-    // 3. Si nos quedamos sin frases en el mazo, lo volvemos a barajar
+// 3. Función para obtener una frase aleatoria sin repetición inmediata
+function obtenerFraseAleatoria() {
     if (frasesDisponibles.length === 0) {
         barajarFrases();
+        // Reiniciamos el historial cuando se reciclan todas las frases
+        frasesMostradas = [];
     }
 
-    // 4. Sacamos una frase del mazo (usando .pop() que es muy eficiente)
-    const fraseElegida = frasesDisponibles.pop();
+    let fraseElegida;
     
-    const fraseElement = document.getElementById("fraseDiego");
-    fraseElement.textContent = `"${fraseElegida}"`;
+    // Si estamos en modo aleatorio o es la primera frase
+    if (modoAleatorio || frasesMostradas.length === 0) {
+        fraseElegida = frasesDisponibles.pop();
+    } else {
+        // Evitamos repetir la última frase mostrada
+        let indice;
+        do {
+            indice = Math.floor(Math.random() * frasesDisponibles.length);
+            fraseElegida = frasesDisponibles[indice];
+        } while (fraseElegida === fraseActual && frasesDisponibles.length > 1);
+        
+        // Eliminamos la frase seleccionada del mazo
+        frasesDisponibles.splice(indice, 1);
+    }
+    
+    // Actualizamos la frase actual y la añadimos al historial
+    fraseActual = fraseElegida;
+    frasesMostradas.push(fraseElegida);
+    
+    return fraseElegida;
 }
 
-// 5. ¡Importante! Barajamos el mazo por primera vez cuando se carga la página
-barajarFrases();
+// 4. Función principal para cambiar la frase
+function cambiarFrase() {
+    const fraseElegida = obtenerFraseAleatoria();
+    
+    const fraseElement = document.getElementById("fraseDiego");
+    const contadorElement = document.getElementById("contadorFrases");
+    
+    // Efecto de desvanecimiento
+    fraseElement.style.opacity = 0;
+    
+    setTimeout(() => {
+        fraseElement.textContent = `"${fraseElegida}"`;
+        fraseElement.style.opacity = 1;
+        
+        // Actualizar contador si existe
+        if (contadorElement) {
+            const frasesRestantes = frasesDisponibles.length;
+            const totalFrases = frasesMaradona.length;
+            contadorElement.textContent = `${frasesRestantes}/${totalFrases}`;
+        }
+    }, 300);
+}
+
+// 5. Función para cambiar entre modos de visualización
+function cambiarModo() {
+    modoAleatorio = !modoAleatorio;
+    const botonModo = document.getElementById("botonModo");
+    
+    if (botonModo) {
+        botonModo.textContent = modoAleatorio ? "Modo: Aleatorio" : "Modo: Sin Repetir";
+        botonModo.classList.toggle("modo-aleatorio", modoAleatorio);
+    }
+    
+    // Reiniciamos el mazo al cambiar de modo
+    barajarFrases();
+    frasesMostradas = [];
+}
+
+// 6. Función para compartir frase en redes sociales
+function compartirFrase() {
+    if (navigator.share) {
+        navigator.share({
+            title: 'Frase de Maradona',
+            text: `"${fraseActual}" - Diego Armando Maradona`,
+            url: window.location.href
+        })
+        .catch(error => console.log('Error al compartir:', error));
+    } else {
+        // Fallback para navegadores que no soportan Web Share API
+        const textoCompartir = `"${fraseActual}" - Diego Armando Maradona\n\nMás frases en: ${window.location.href}`;
+        navigator.clipboard.writeText(textoCompartir)
+            .then(() => {
+                alert('¡Frase copiada al portapapeles!');
+            })
+            .catch(err => {
+                console.error('Error al copiar: ', err);
+            });
+    }
+}
+
+// 7. Función para obtener una frase específica por índice
+function obtenerFrasePorIndice(indice) {
+    if (indice >= 0 && indice < frasesMaradona.length) {
+        return frasesMaradona[indice];
+    }
+    return null;
+}
+
+// 8. Función para buscar frases por palabra clave
+function buscarFrases(palabraClave) {
+    return frasesMaradona.filter(frase => 
+        frase.toLowerCase().includes(palabraClave.toLowerCase())
+    );
+}
+
+// 9. Función para obtener estadísticas de uso
+function obtenerEstadisticas() {
+    return {
+        total: frasesMaradona.length,
+        disponibles: frasesDisponibles.length,
+        mostradas: frasesMostradas.length,
+        porcentajeCompletado: ((frasesMostradas.length / frasesMaradona.length) * 100).toFixed(1)
+    };
+}
+
+// 10. Función para reiniciar el mazo completamente
+function reiniciarMazo() {
+    barajarFrases();
+    frasesMostradas = [];
+    fraseActual = "";
+    
+    const contadorElement = document.getElementById("contadorFrases");
+    if (contadorElement) {
+        const totalFrases = frasesMaradona.length;
+        contadorElement.textContent = `${totalFrases}/${totalFrases}`;
+    }
+    
+    const fraseElement = document.getElementById("fraseDiego");
+    if (fraseElement) {
+        fraseElement.textContent = '¡Presiona el botón para una nueva frase!';
+    }
+}
+
+// 11. Función para inicializar la aplicación
+function inicializarApp() {
+    barajarFrases();
+    
+    // Agregar event listeners si los elementos existen
+    const botonReiniciar = document.getElementById("botonReiniciar");
+    if (botonReiniciar) {
+        botonReiniciar.addEventListener("click", reiniciarMazo);
+    }
+    
+    const botonCompartir = document.getElementById("botonCompartir");
+    if (botonCompartir) {
+        botonCompartir.addEventListener("click", compartirFrase);
+    }
+    
+    const botonModo = document.getElementById("botonModo");
+    if (botonModo) {
+        botonModo.addEventListener("click", cambiarModo);
+    }
+    
+    // Permitir cambiar frase con la tecla Espacio
+    document.addEventListener("keydown", (event) => {
+        if (event.code === "Space") {
+            event.preventDefault();
+            cambiarFrase();
+        }
+    });
+    
+    console.log("App de frases de Maradona inicializada correctamente");
+    console.log(`Total de frases: ${frasesMaradona.length}`);
+}
+
+// 12. Inicializar la aplicación cuando el DOM esté listo
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', inicializarApp);
+} else {
+    inicializarApp();
+}
+
+// Exportar funciones para uso externo si es necesario
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        cambiarFrase,
+        obtenerFrasePorIndice,
+        buscarFrases,
+        obtenerEstadisticas,
+        reiniciarMazo,
+        frasesMaradona
+    };
+}
