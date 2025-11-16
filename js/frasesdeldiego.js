@@ -41,9 +41,40 @@ const frasesMaradona = [
     "Creeme que me cortaron las piernas…"
 ];
 
-function cambiarFrase() {
-    const fraseElement = document.getElementById("fraseDiego");
-    const indice = Math.floor(Math.random() * frasesMaradona.length);
-    const fraseConComillas = `"${frasesMaradona[indice]}"`; // Agregar comillas alrededor de la frase
-    fraseElement.textContent = fraseConComillas;
+const frasesMaradona = [
+    // ... (tu lista original de frases va aquí)
+    "La pelota no se mancha",
+    "Dios me iluminó en ese momento",
+    // ... etc
+    "Miren que me han puesto apodos pero 'Pelusa' es el que más va conmigo..."
+];
+
+// 1. Creamos nuestro "mazo" de frases disponibles
+let frasesDisponibles = [];
+
+// 2. Función para barajar el mazo original y llenar el mazo disponible
+function barajarFrases() {
+    // Copiamos el array original y lo mezclamos (algoritmo Fisher-Yates)
+    let mazoTemporal = [...frasesMaradona];
+    for (let i = mazoTemporal.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [mazoTemporal[i], mazoTemporal[j]] = [mazoTemporal[j], mazoTemporal[i]];
+    }
+    frasesDisponibles = mazoTemporal;
 }
+
+function cambiarFrase() {
+    // 3. Si nos quedamos sin frases en el mazo, lo volvemos a barajar
+    if (frasesDisponibles.length === 0) {
+        barajarFrases();
+    }
+
+    // 4. Sacamos una frase del mazo (usando .pop() que es muy eficiente)
+    const fraseElegida = frasesDisponibles.pop();
+    
+    const fraseElement = document.getElementById("fraseDiego");
+    fraseElement.textContent = `"${fraseElegida}"`;
+}
+
+// 5. ¡Importante! Barajamos el mazo por primera vez cuando se carga la página
+barajarFrases();
