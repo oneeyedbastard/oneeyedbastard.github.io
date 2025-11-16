@@ -1,387 +1,475 @@
-/* --- 1. Variables Globales y Reset --- */
-:root {
-    --color-gold: #ffd700;
-    --color-red: #8b0000;
-    --color-red-light: #ff0000;
-    --color-dark-bg: #0a0a0a;
-    --color-dark-card: rgba(20, 20, 20, 0.95);
-    --color-text-primary: #fff;
-    --color-text-secondary: #ccc;
-
-    --font-title: 'Six Caps', sans-serif;
-    --font-body: 'Newsreader', serif;
-}
-
+/* --- 1. CONFIGURACIÓN GLOBAL Y RESET --- */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; 
 }
 
-body, html {
-    height: 100%;
-    font-family: var(--font-body);
-    background: linear-gradient(135deg, var(--color-dark-bg) 0%, #1a1a1a 50%, #2a1a0a 100%);
-    color: var(--color-text-primary);
-    overflow-x: hidden;
+body {    
+    background-color: rgba(59, 100, 73, 0.178);        
+    color: rgb(48, 46, 46);    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh; 
+    padding: 1rem; 
 }
 
-body {
-    /* Clave para que position: absolute funcione bien */
-    position: relative; 
+a {
+    text-decoration: none;
+    color: inherit; /* El h1 heredará el color del body */
 }
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.main-container {
+    width: 100%;
+    max-width: 1200px; 
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- 2. TIPOGRAFÍA RESPONSIVA (Mobile-First) --- */
+h1 {
+    text-transform: uppercase;
+    font-family: 'Six Caps', sans-serif;   
+    font-size: clamp(4.5rem, 20vw, 9rem);
+    line-height: 1;
+    margin-top: 2rem;
+    font-weight: 900;
+
+}
+
+.contenedor-frase {
+    width: 90%; /* Ocupa casi todo el ancho en móvil */
+    margin: 1.5rem auto;
+    /* ¡MEJORA! Usamos padding, no height, para que se adapte al texto */
+    padding: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.85); /* Más opaco para legibilidad */
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* Una sombra sutil */
+}
+
+p {   
+    font-size: clamp(1.25rem, 5vw, 2rem);
+    font-weight: 800;
+    line-height: 1.6;
+    text-align: center;    
+    background-color: transparent; 
+    margin-top: 0;
+    padding: 0;
+}
+
 
 a {
     text-decoration: none;
     color: inherit;
 }
 
-/* --- 2. Fondos y Decoraciones Optimizados --- */
-/* * CAMBIO CLAVE: Usamos 'absolute' en lugar de 'fixed'.
- * Esto evita el "repintado" en cada scroll en móviles.
- * Es mucho más rápido.
-*/
-.stadium-background,
-.stadium-lights,
-.particles,
-.maradona-figure {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    pointer-events: none; /* No dejes que interfieran con los clics */
-}
-
-.stadium-background {
-    background: 
-        radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
-        linear-gradient(45deg, var(--color-dark-bg) 0%, #1a1a1a 100%);
-    z-index: -3;
-}
-
-.stadium-lights {
-    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-    animation: stadiumLights 4s ease-in-out infinite;
-    z-index: -2;
-}
-
-.maradona-figure {
-    /* Estos no necesitan width/height 100% */
-    height: auto; 
-    opacity: 0.4;
-    filter: sepia(1) hue-rotate(-10deg);
-    animation: float 6s ease-in-out infinite;
-    
-    /* Pista de optimización para la GPU */
-    will-change: transform; 
-}
-
-/* Estilos base (Mobile) */
-.maradona-1 {
-    top: 10%;
-    left: 5%;
-    width: 100px; /* Un poco más chico para móvil */
-    animation-delay: 0s;
-}
-
-.maradona-2 {
-    bottom: 10%;
-    right: 5%;
-    width: 90px;
-    animation-delay: 2s;
-}
-
-.maradona-3 {
-    /* Oculto en móvil por defecto */
-    display: none;
-}
-
-
-/* --- 3. Layout Base (Mobile First) --- */
 .wrapper {
-    /* Usamos min-height para que el footer no se suba */
-    min-height: 100vh;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Empuja el footer hacia abajo */
+    justify-content: center;
 }
 
 .main-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
     width: 100%;
-    flex-grow: 1; /* Hace que el main ocupe el espacio */
-}
-
-/* --- 4. Componentes (Mobile First) --- */
-
-/* --- Header --- */
-.header-container {
+    max-width: 1200px;
     text-align: center;
-    margin-bottom: 30px; /* Menos margen en móvil */
     position: relative;
-    width: 100%;
+    z-index: 1;
 }
 
+/* --- 2. TIPOGRAFÍA RESPONSIVA (Mobile-First) --- */
 h1 {
-    font-family: var(--font-title);
-    font-size: 3.5rem; /* Más chico para móviles */
-    color: var(--color-gold);
     text-transform: uppercase;
+    font-family: 'Six Caps', sans-serif;
+    font-size: clamp(4.5rem, 20vw, 9rem);
     line-height: 1;
-    margin-bottom: 10px;
-    text-shadow: 3px 3px 0 var(--color-red);
-    animation: slideUp 1s ease-out;
+    margin-top: 2rem;
 }
 
-.title-stripe {
-    width: 80%;
-    height: 6px;
-    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
-    margin: 0 auto 15px;
-    border-radius: 4px;
+.contenedor-frase {
+    width: 90%;
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
-.subtitle {
-    font-family: var(--font-body);
-    font-size: 1rem;
-    color: var(--color-text-secondary);
-    font-weight: 300;
-    letter-spacing: 1px;
-}
-
-/* --- Tarjeta de Frase --- */
-.frase-card {
-    background: var(--color-dark-card);
-    backdrop-filter: blur(10px); /* Menos blur en móvil (rendimiento) */
-    border: 1px solid rgba(255, 215, 0, 0.2); /* Borde más sutil */
-    border-radius: 16px;
-    padding: 25px 20px;
-    margin: 20px 0;
-    width: 95%; /* Casi todo el ancho */
-    max-width: 500px; /* Límite para que no se estire mucho */
-    position: relative;
-    overflow: hidden;
-    animation: slideUp 1.2s ease-out, pulse-glow 3s ease-in-out infinite;
-}
-
-.frase-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--color-red), var(--color-gold), var(--color-red));
-}
-
-.frase-content {
-    font-size: 1.3rem; /* Tamaño legible en móvil */
+p {
+    font-size: clamp(1.25rem, 5vw, 2rem);
+    font-weight: 500;
     line-height: 1.6;
-    color: var(--color-text-primary);
     text-align: center;
-    font-weight: 400;
-    position: relative;
+    background-color: transparent; 
+    margin-top: 0;
+    padding: 0;
 }
 
-.quote-mark {
-    font-family: var(--font-title);
-    font-size: 3rem;
-    color: var(--color-gold);
-    position: absolute;
-    opacity: 0.2;
-}
-
-.quote-start {
-    top: -15px;
-    left: 5px;
-}
-
-.quote-end {
-    bottom: -25px;
-    right: 5px;
-}
-
-/* --- Botón --- */
-.button-container {
-    margin-top: 25px;
-    animation: slideUp 1.4s ease-out;
-}
-
-.cta-button {
-    font-family: var(--font-title);
-    font-size: 1.5rem;
-    background: linear-gradient(135deg, var(--color-red) 0%, var(--color-red-light) 50%, var(--color-red) 100%);
-    color: white;
-    border: none;
-    padding: 12px 35px;
-    border-radius: 50px;
-    cursor: pointer;
+/* --- 3. BOTÓN (¡NUEVO ESTILO!) --- */
+button {
+    /* Diseño y tipografía */
+    font-family: 'Six Caps', sans-serif;
+    color: aliceblue; /* Color de texto claro */
+    font-size: 2.2rem; /* Tamaño de fuente responsivo base */
+    font-weight: 800; /* Corregido de 'font-size: 800' */
     text-transform: uppercase;
-    letter-spacing: 2px;
+    
+    /* Padding y espaciado */
+    padding: 15px 40px; /* Tu nuevo padding */
+    margin: 1.5rem auto 0;    
+    
+    /* Propiedades para el efecto */
+    border: none;
+    outline: none;
+    border-radius: 12px;
     position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    will-change: transform; /* Optimización */
+    z-index: 0; /* Asegura el apilamiento de pseudo-elementos */
+    background-color: transparent; /* El botón es transparente */
+    
+    /* Interacción */
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Solo animamos el transform */
 }
 
-.cta-button::before {
+/* ::after es el fondo sólido del botón */
+button::after {
     content: "";
+    z-index: -1; /* Se ubica detrás del texto */
     position: absolute;
-    top: 0;
-    left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
+    /* Un fondo oscuro para que resalte el texto 'aliceblue' */
+    background-color: rgb(255, 255, 255); 
+    left: 0;
+    top: 0;
+    border-radius: 12px; /* Mismo borde que el botón */
+    transition: background-color 0.3s ease; /* Transición para el hover */
 }
 
-.cta-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(139, 0, 0, 0.5);
+/* ::before es el resplandor (glow) animado */
+button::before {
+    content: "";
+    position: absolute;
+    z-index: -2; /* Se ubica detrás del fondo sólido */
+    
+    /* Posición y tamaño (Corregido) */
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px); /* Corregida la sintaxis de calc() */
+    height: calc(100% + 4px); /* Corregida la sintaxis de calc() */
+
+    /* El gradiente (Corregido) */
+    background-image: linear-gradient(
+        45deg,
+        #ff0000,
+        #ff7300,
+        #fffb00,
+        #48ff00,
+        #00ffd5,
+        #002bff,
+        #ff00c8,
+        #ff0000 
+    );
+    
+    /* Efectos y Animación */
+    background-size: 600%;
+    filter: blur(8px);
+    animation: glow 10s linear infinite; /* Animación aplicada */
 }
 
-.cta-button:hover::before {
-    left: 100%;
+/* Nuevo efecto hover para el botón brillante */
+button:hover {
+    transform: scale(1.05); /* Mantenemos el escalado */
 }
 
-.cta-button:active {
-    transform: translateY(0);
+button:hover::after {
+    background-color: black; /* Hacemos el fondo un poco más oscuro */
 }
 
-/* --- Footer --- */
-.footer {
-    padding: 20px;
-    text-align: center;
-    font-size: 0.9rem;
-    color: #666;
-    width: 100%;
+
+/* --- 4. IMÁGENES DE FONDO (Mobile-First) --- */
+/* (Esta sección permanece igual que antes) */
+.background-image-01,
+.background-image-02,
+.background-image-03,
+.background-image-04 {
+    position: fixed;
+    z-index: -1;
+    height: auto;
+    opacity: 0.3;
 }
 
-/* --- Animaciones (Keyframes) --- */
-/* (Tus keyframes están perfectos, los dejo tal cual) */
-@keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(1deg); }
+.background-image-01 {
+    width: 80vw;
+    max-width: 350px;
+    top: 50%;
+    left: 50%;
+    animation: oscilarArribaAbajo 20s ease-in-out infinite alternate;
+    transform: translate(-50%, -50%);
 }
-@keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.2); border-color: rgba(255, 215, 0, 0.2); }
-    50% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.5); border-color: rgba(255, 215, 0, 0.5); }
+
+.background-image-03 {
+    width: 90vw;
+    max-width: 400px;
+    top: 20%;
+    left: 50%;
+    opacity: 0.1;
+    z-index: -2;
+    animation: rotarPoco 25s linear infinite alternate;
+    transform: translate(-50%, -50%) rotate(-10deg);
 }
-@keyframes slideUp {
-    0% { transform: translateY(50px); opacity: 0; }
-    100% { transform: translateY(0); opacity: 1; }
+
+.background-image-02,
+.background-image-04 {
+    display: none; 
 }
-@keyframes stadiumLights {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.8; }
-}
-/* (etc... tus otros keyframes) */
 
 
-/* ======================================= */
-/* --- 5. MEDIA QUERIES (Mobile-First) --- */
-/* ======================================= */
-/*
- * ¡TU METODOLOGÍA AQUÍ ESTABA PERFECTA!
- * Definís la base para móvil (arriba) y "escalás hacia arriba"
- * con min-width. Eso es exactamente mobile-first.
- * Solo ajusté los valores para que coincidan con los nuevos.
-*/
+/* --- 5. @keyframes (¡Añadida la animación GLOW!) --- */
+@keyframes oscilarArribaAbajo {
+    from {
+        transform: translate(-50%, -55%);
+    }
+    to {
+        transform: translate(-50%, -45%);
+    }
+}
 
-/* Tablet */
-@media screen and (min-width: 768px) {
+@keyframes rotarPoco {
+    from {
+        transform: translate(-50%, -50%) rotate(-15deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(5deg);
+    }
+}
+
+/* ¡NUEVA! Animación para el botón */
+@keyframes glow {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 400% 0; /* Mueve el gradiente */
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+
+/* --- 6. MEDIA QUERY PARA ESCRITORIO (min-width: 1200px) --- */
+@media screen and (min-width: 1200px) {
+
+    body {
+        padding: 2rem;
+    }
+
     h1 {
-        font-size: 5rem;
-    }
-    
-    .frase-card {
-        padding: 40px 35px;
-        width: 80%;
-        max-width: 600px;
-        backdrop-filter: blur(20px); /* Más blur en pantallas grandes */
-    }
-    
-    .frase-content {
-        font-size: 1.6rem;
+        font-size: clamp(9rem, 10vw, 12rem); 
     }
 
-    .cta-button {
-        font-size: 1.8rem;
-        padding: 15px 40px;
+    .contenedor-frase {
+        width: 60%;
+        max-width: 800px;
+        padding: 2.5rem;
     }
-    
-    .maradona-1 {
-        width: 150px;
-    }
-    
-    .maradona-2 {
-        width: 130px;
-    }
-}
 
-/* Desktop */
-@media screen and (min-width: 1024px) {
-    .main-container {
-        padding: 40px;
+    p {
+        font-size: clamp(2rem, 2.5vw, 2.5rem); 
+        font-weight: 400;
     }
-    
-    h1 {
-        font-size: 6rem;
+
+    /* Ajustamos solo el tamaño de fuente del botón en escritorio */
+    button {
+        font-size: 2.5rem;
     }
-    
-    .frase-card {
-        padding: 50px 45px;
-        max-width: 700px;
-    }
-    
-    .frase-content {
-        font-size: 1.8rem;
-    }
-    
-    .cta-button {
-        font-size: 2rem;
-        padding: 18px 50px;
-    }
-    
-    .maradona-figure {
-        opacity: 0.5;
-    }
-    
-    .maradona-1 {
-        width: 180px;
-        left: 10%;
-    }
-    
-    .maradona-2 {
-        width: 160px;
-        right: 10%;
-    }
-    
-    /* Mostrar tercera imagen en desktop */
-    .maradona-3 {
-        display: block;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 200px;
+
+    /* (El resto de la media query para las imágenes de fondo sigue igual) */
+
+    .background-image-01 {
+        width: auto;
+        height: 80vh;
+        max-height: 700px;
+        top: 60%;
+        left: 20%;
         opacity: 0.2;
-        animation: float 8s ease-in-out infinite;
-        animation-delay: 4s;
+    }
+
+    .background-image-02 {
+        display: block;
+        width: auto;
+        height: 80vh;
+        max-height: 600px;
+        top: 60%;
+        left: 90%;
+        opacity: 0.2;
+        animation: oscilarArribaAbajo 18s ease-in-out infinite alternate-reverse;
+        transform: translate(-50%, -55%);
+    }
+
+    .background-image-03 {
+        width: auto;
+        height: 100vh;
+        max-height: 900px;
+        top: 60%;
+        left: 20%;
+        opacity: 0.1;
+        z-index: -3;
+    }
+
+    .background-image-04 {
+        display: block;
+        width: auto;
+        height: 100vh;
+        max-height: 800px;
+        top: 65%;
+        left: 70%;
+        z-index: -2;
+        opacity: 0.3;
+        animation: oscilarArribaAbajo 22s ease-in-out infinite alternate;
+        transform: translate(-50%, -50%) rotate(10deg);
     }
 }
 
-/* --- 6. Accesibilidad (¡Perfecto!) --- */
-@media (prefers-reduced-motion: reduce) {
-    *, ::before, ::after {
-        animation: none !important;
-        transition: none !important;
+/* --- 4. IMÁGENES DE FONDO (Mobile-First) --- */
+/* Base para todas las imágenes */
+.background-image-01,
+.background-image-02,
+.background-image-03,
+.background-image-04 {
+    position: fixed;
+    z-index: -1; /* Detrás del contenido (z-index: 1) */
+    height: auto; /* Mantiene la proporción */
+    opacity: 0.3; /* Opacidad sutil */
+}
+
+/* Estilos para MÓVIL (base) */
+.background-image-01 {
+    width: 80vw; /* 80% del ancho de pantalla */
+    max-width: 350px; /* Límite para que no se pixele */
+    top: 50%;
+    left: 50%;
+    animation: oscilarArribaAbajo 20s ease-in-out infinite alternate;
+    transform: translate(-50%, -50%); /* Centrada */
+}
+
+.background-image-03 {
+    width: 90vw;
+    max-width: 400px;
+    top: 20%;
+    left: 50%;
+    opacity: 0.1;
+    z-index: -2; /* Aún más atrás */
+    animation: rotarPoco 25s linear infinite alternate;
+    transform: translate(-50%, -50%) rotate(-10deg);
+}
+
+/* Ocultamos las otras en móvil para no saturar */
+.background-image-02,
+.background-image-04 {
+    display: none; 
+}
+
+
+/* --- 5. @keyframes (¡Las animaciones que faltaban!) --- */
+@keyframes oscilarArribaAbajo {
+    from {
+        /* El translate X/Y base se combina con el movimiento */
+        transform: translate(-50%, -55%);
+    }
+    to {
+        transform: translate(-50%, -45%);
     }
 }
-/* (Tu @media (prefers-contrast) también estaba genial) */
+
+@keyframes rotarPoco {
+    from {
+        transform: translate(-50%, -50%) rotate(-15deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(5deg);
+    }
+}
+
+
+/* --- 6. MEDIA QUERY PARA ESCRITORIO (min-width: 1200px) --- */
+@media screen and (min-width: 1200px) {
+
+    body {
+        padding: 2rem; /* Más espaciado en escritorio */
+    }
+
+    h1 {
+        /* Permitimos que crezca más en escritorio */
+        font-size: clamp(9rem, 10vw, 12rem); 
+    }
+
+    .contenedor-frase {
+        width: 60%; /* Más angosto en escritorio */
+        max-width: 800px;
+        padding: 2.5rem; /* Más padding interno */
+    }
+
+    p {
+        /* Tamaño de fuente más grande para escritorio */
+        font-size: clamp(2rem, 2.5vw, 2.5rem); 
+        font-weight: 400; /* Como lo tenías */
+    }
+
+    
+    /* Reposicionamos las imágenes de fondo para escritorio */
+    .background-image-01 {
+        width: auto;
+        height: 80vh; /* Relativo a la altura de la pantalla */
+        max-height: 700px; /* Límite */
+        top: 60%;
+        left: 20%;
+        opacity: 0.2;
+        /* La animación ya está aplicada */
+    }
+
+    .background-image-02 {
+        display: block; /* La mostramos */
+        width: auto;
+        height: 80vh;
+        max-height: 600px;
+        top: 60%;
+        left: 90%;
+        opacity: 0.2;
+        animation: oscilarArribaAbajo 18s ease-in-out infinite alternate-reverse;
+        transform: translate(-50%, -55%); /* Estado inicial de la anim. */
+    }
+
+    .background-image-03 {
+        width: auto;
+        height: 100vh;
+        max-height: 900px;
+        top: 60%;
+        left: 20%;
+        opacity: 0.1;
+        z-index: -3;
+    }
+
+    .background-image-04 {
+        display: block; /* La mostramos */
+        width: auto;
+        height: 100vh;
+        max-height: 800px;
+        top: 65%;
+        left: 70%;
+        z-index: -2;
+        opacity: 0.3; /* 1 era demasiado fuerte */
+        /* Agregamos la animación que tenías planeada */
+        animation: oscilarArribaAbajo 22s ease-in-out infinite alternate;
+        transform: translate(-50%, -50%) rotate(10deg);
+    }
+}
