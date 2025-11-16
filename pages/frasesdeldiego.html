@@ -1,43 +1,58 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <title>Frases del Diego</title>
     <link rel="icon" href="../images/logo.webp" type="image/x-icon">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Six+Caps&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,200;6..72,300;6..72,400;6..72,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Six+Caps&family=Newsreader:opsz,wght@6..72,200;6..72,300;6..72,400;6..72,500&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" type="text/css" href="css/navbar.css">
     <link rel="stylesheet" type="text/css" href="../css/frasesdeldiego.css">
 </head>
 
 <body>
-    <div class="wrapper">
-        <div class="main-container">
-            <a href="../proyectos.html"><h1>Frases del Diego</h1></a>
-            <div class="contenedor-frase">
-                <p id="fraseDiego"></p>
-            </div>
-            <div class="contenedor-boton">
-                <button id="cambiar-frase" onclick="cambiarFrase()">
-                    Cambiar Frase
-                </button>
-            </div>
-            <!--<img id="diego01" src="../images/diego-maradona-10.png" alt="Diego Maradona" class="background-image-01">
-            <img id="diego02" src="../images/1575581231301Maradona.png" alt="Diego Maradona" class="background-image-02">
-            <img id="diego03" src="../images/Imagen-Gol-Maradona-campeonato-4.webp" alt="Diego Maradona" class="background-image-04">
-            <img id="diego03" src="../images/tapa.png" alt="Diego Maradona" class="background-image-03">
-            -->
+
+    <header>
+        <h1>Frases del Diego</h1>
+        <nav>
+            <a href="../proyectos.html">Volver a Proyectos</a>
+        </nav>
+    </header>
+
+    <main class="main-container">
+       
+        <div class="contenedor-frase">
+            <p id="fraseDiego"></p>
         </div>
-    </div>
+        <div class="contenedor-boton">
+            <button id="cambiar-frase" onclick="cambiarFrase()">
+                Cambiar Frase
+            </button>
+        </div>
+
+        <img id="diego01" src="../images/diego-maradona-10.png" alt="" class="background-image-01">
+        <img id="diego02" src="../images/1575581231301Maradona.png" alt="" class="background-image-02">
+        
+    </main>
+    
+
+    <footer>
+        <h2>Contacto</h2>
+        <ul>
+            <li>
+                <a href="https://www.linkedin.com/in/oneeyedbastard/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </li>
+            <li>
+                <a href="mailto:oneeyedbastard@outlook.com.ar">oneeyedbastard@outlook.com.ar</a>
+            </li>
+        </ul>
+    </footer>
 
     <script src="../js/frasesdeldiego.js"></script>
+
 </body>
-
 </html>
-
 
