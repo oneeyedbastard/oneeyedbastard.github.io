@@ -28,7 +28,17 @@ const frasesMaradona = [
     "Tus decisiones le cagaron la vida a las próximas dos generaciones de argentinos. Hacete cargo, querido. Ya lo dijo tu padre...",
     "¿Me van a contar a mí cómo es Juan Simón? Lo conozco hace diez años. Es capaz de tomarle la leche al gato",
     "Si el país no llega al arco contrario, tenemos que hacer cambios, aunque sea al Presidente",
-    "Tampoco muerto encontraría paz. Me utilizan en vida, y encontrarán el momento de hacerlo estando muerto"
+    "Tampoco muerto encontraría paz. Me utilizan en vida, y encontrarán el momento de hacerlo estando muerto",
+    "Pensé que venía Berlusconi y me encontré con el cartonero Báez",
+    "Me siento más sólo que Kung Fu",
+    "La droga es un pacman que te va comiendo toda tu familia",
+    "Me había propuesto hacerle dos goles a Gatti, pero ahora que me dijo 'gordito' le voy a meter cuatro",
+    "Yo quería ir a Estados Unidos, pero el cabeza de termo de Clinton no me deja entrar",
+    "Le digo sanguchito porque está siempre cerca de la torta",
+    "En mi puta vida pensé que iba a estar en Cuba jugando al golf",
+    "La rinoscopía, el pelo corto... Un día los muchachos de la Selección se van a rascar un huevo y Passarella se los va a mandar a cortar",
+    "Miren que me han puesto apodos pero 'Pelusa' es el que más va conmigo porque me devuelve a la infancia en Fiorito. Me acuerdo de los Cebollitas, de los arcos de caña cuando jugábamos solamente por la Coca y el sándwich. Eso era más puro"
+    
 ];
 
 function cambiarFrase() {
