@@ -41,10 +41,7 @@ const phpCodes = [
     "<?php $age = 20; echo ($age >= 18) ? 'Adulto' : 'Menor'; ?>",
     "<?php echo 'Hoy es ' . date('Y-m-d'); ?>",
     "<?php print_r(['a', 'b', 'c']); ?>",
-    "<?php $a = 5; $b = 10; echo $a + $b; ?>",
-    
-    // --- Más ejemplos ---
-    
+    "<?php $a = 5; $b = 10; echo $a + $b; ?>",    
     "<?php if (true) { echo 'Verdadero'; } else { echo 'Falso'; } ?>",
     "<?php $i = 0; while ($i < 3) { echo $i; $i++; } ?>",
     `<?php
@@ -101,8 +98,8 @@ function showPHPCode() {
     }
 }
 
-// Assign the showPHPCode function on clicking the black square
+
 document.getElementById("codigoPHP").addEventListener("load", showPHPCode);
 
-// Show a random PHP code on page load
+
 showPHPCode();
