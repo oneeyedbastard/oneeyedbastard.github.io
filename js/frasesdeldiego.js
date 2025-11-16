@@ -37,8 +37,8 @@ const frasesMaradona = [
     "Le digo sanguchito porque está siempre cerca de la torta",
     "En mi puta vida pensé que iba a estar en Cuba jugando al golf",
     "La rinoscopía, el pelo corto... Un día los muchachos de la Selección se van a rascar un huevo y Passarella se los va a mandar a cortar",
-    "Miren que me han puesto apodos pero 'Pelusa' es el que más va conmigo porque me devuelve a la infancia en Fiorito. Me acuerdo de los Cebollitas, de los arcos de caña cuando jugábamos solamente por la Coca y el sándwich. Eso era más puro"
-    
+    "Miren que me han puesto apodos pero 'Pelusa' es el que más va conmigo porque me devuelve a la infancia en Fiorito. Me acuerdo de los Cebollitas, de los arcos de caña cuando jugábamos solamente por la Coca y el sándwich. Eso era más puro",
+    "Creeme que me cortaron las piernas…"
 ];
 
 function cambiarFrase() {
