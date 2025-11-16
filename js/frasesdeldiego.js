@@ -45,6 +45,9 @@ const frasesMaradona = [
     "A veces me agarran bajones, pero pongo 'El Chavo' y se me pasa todo",
     "¿Qué sos guapo? ¿Qué saltás canguro?, sos una cosa chiquitita",
     "Del Lobo y de Estancia Chica me va a tener que sacar la gendarmería",
+    "Cuando salí a la cancha, creía que el corazón me iba a explotar, pero alguien de arriba me frenó",
+    "Esta camiseta es la más linda del mundo porque tienen nuestros colores. Acá estoy en mi casa",
+    "Tengo memoria. Al que no creía, a los que no creyeron, con perdón de las damas, que la chupen y que la siguen chupando"
 ];
 
 // Eliminé el array duplicado que tenías
