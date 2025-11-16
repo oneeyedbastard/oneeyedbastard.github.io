@@ -39,6 +39,12 @@ const frasesMaradona = [
     "La rinoscopía, el pelo corto... Un día los muchachos de la Selección se van a rascar un huevo y Passarella se los va a mandar a cortar",
     "Miren que me han puesto apodos pero 'Pelusa' es el que más va conmigo porque me devuelve a la infancia en Fiorito. Me acuerdo de los Cebollitas, de los arcos de caña cuando jugábamos solamente por la Coca y el sándwich. Eso era más puro",
     "Creeme que me cortaron las piernas…",
+    "Lástima no se le tiene a nadie, maestro. Si vos le tenés bronca, pelealo. Pero lástima a nadie",
+    "Hoy no hablo, muchachos. Tengo menos palabras que un telegrama",
+    "Cuando dicen que soy Dios, yo respondo que están equivocados: soy un simple jugador de fútbol. Dios es Dios y yo soy Diego",
+    "A veces me agarran bajones, pero pongo 'El Chavo' y se me pasa todo",
+    "¿Qué sos guapo? ¿Qué saltás canguro?, sos una cosa chiquitita",
+    "Del Lobo y de Estancia Chica me va a tener que sacar la gendarmería",
 ];
 
 // Eliminé el array duplicado que tenías
