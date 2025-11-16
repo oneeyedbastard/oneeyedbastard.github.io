@@ -25,16 +25,54 @@ function translateToGerman() {
 }
 
 
-// Códigos PHP al azar
-const codigosPHP = [
+// Random PHP codes
+const phpCodes = [
     `<?php
-    function elevarAlCuadrado($numero) {
-        return $numero * $numero;
+    function squareNumber($number) {
+        return $number * $number;
     }
     ?>`,
     
     "<?php $variable = 10; echo $variable * 5; ?>",
-    "<?php function saludar() { return '¡Hola!'; } echo saludar(); ?>"
+    "<?php function greet() { return 'Hello!'; } echo greet(); ?>",
+    "<?php $name = 'Mundo'; echo '¡Hola, ' . $name . '!'; ?>",
+    "<?php $colors = ['rojo', 'verde', 'azul']; echo $colors[0]; ?>",
+    "<?php for ($i = 1; $i <= 3; $i++) { echo $i . '... '; } ?>",
+    "<?php $age = 20; echo ($age >= 18) ? 'Adulto' : 'Menor'; ?>",
+    "<?php echo 'Hoy es ' . date('Y-m-d'); ?>",
+    "<?php print_r(['a', 'b', 'c']); ?>",
+    "<?php $a = 5; $b = 10; echo $a + $b; ?>",
+    
+    // --- Más ejemplos ---
+    
+    "<?php if (true) { echo 'Verdadero'; } else { echo 'Falso'; } ?>",
+    "<?php $i = 0; while ($i < 3) { echo $i; $i++; } ?>",
+    `<?php
+    class User {
+        public $name;
+        public function __construct($name) {
+            $this->name = $name;
+        }
+    }
+    $user = new User('Juan');
+    echo $user->name;
+    ?>`,
+    "<?php $data = ['id' => 1, 'name' => 'Test']; echo json_encode($data); ?>",
+    "<?php session_start(); $_SESSION['user_id'] = 123; ?>",
+    "<?php echo strlen('Hola Mundo'); // Imprime 10 ?>",
+    "<?php $text = 'hola'; echo strtoupper($text); // Imprime HOLA ?>",
+    "<?php $array = [3, 1, 2]; sort($array); print_r($array); ?>",
+    "<?php echo $_SERVER['HTTP_HOST']; // Muestra el host ?>",
+    `<?php
+    try {
+        $pdo = new PDO('mysql:host=localhost;dbname=test', 'root', '');
+        echo 'Conectado';
+    } catch (PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }
+    ?>`,
+    "<?php $file = 'test.txt'; file_put_contents($file, 'Contenido'); ?>",
+    "<?php $content = file_get_contents('test.txt'); echo $content; ?>"
 ];
 
 
@@ -42,30 +80,29 @@ let currentCodeIndex = 0;
 let currentCharacterIndex = 0;
 let interval;
 
-// Función para mostrar un código PHP al azar letra por letra
-function mostrarCodigoPHP() {
-    const codigoPHPElement = document.getElementById("codigoPHP");
-    if (codigoPHPElement) {
-        currentCodeIndex = Math.floor(Math.random() * codigosPHP.length);
-        const codigoAleatorio = codigosPHP[currentCodeIndex];
-        codigoPHPElement.textContent = "";
+// Function to display a random PHP code letter by letter
+function showPHPCode() {
+    const phpCodeElement = document.getElementById("codigoPHP");
+    if (phpCodeElement) {
+        currentCodeIndex = Math.floor(Math.random() * phpCodes.length);
+        const randomCode = phpCodes[currentCodeIndex];
+        phpCodeElement.textContent = "";
 
         clearInterval(interval);
         currentCharacterIndex = 0;
         interval = setInterval(() => {
-            if (currentCharacterIndex <= codigoAleatorio.length) {
-                codigoPHPElement.textContent = codigoAleatorio.slice(0, currentCharacterIndex);
+            if (currentCharacterIndex <= randomCode.length) {
+                phpCodeElement.textContent = randomCode.slice(0, currentCharacterIndex);
                 currentCharacterIndex++;
             } else {
                 clearInterval(interval);
             }
-        }, 100); // Intervalo de 100 milisegundos (cambiable)
+        }, 100); // 100-millisecond interval (changeable)
     }
 }
 
-// Asignar la función mostrarCodigoPHP al hacer clic en el cuadrado negro
-document.getElementById("codigoPHP").addEventListener("load", mostrarCodigoPHP);
+// Assign the showPHPCode function on clicking the black square
+document.getElementById("codigoPHP").addEventListener("load", showPHPCode);
 
-// Mostrar un código PHP al azar al cargar la página
-mostrarCodigoPHP();
-
+// Show a random PHP code on page load
+showPHPCode();
