@@ -480,10 +480,7 @@ h2 {
 
 /* Móviles */
 @media screen and (max-width: 600px) {
-    .cuadrado-negro {
-        background-color: var(--color-naranja);
-    }
-    
+       
     .navlist {
         width: 80%;
     }
@@ -497,3 +494,4 @@ h2 {
         font-size: 2rem;
     }
 }
+
