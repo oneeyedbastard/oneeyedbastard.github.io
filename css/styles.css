@@ -46,9 +46,11 @@ p {
     text-wrap: pretty;      
 }
 
-h2 {
-    text-shadow: 4px 4px 0px #1c2023;
-    color: #ffffff;    
+/* TÍTULOS DE SECCIÓN CON TEXTO BLANCO Y SOMBRA SÓLIDA NEGRA */
+.sobre-mi h2,
+.seccion-proyectos h2 {
+    color: var(--blanco) !important;
+    text-shadow: 4px 4px 0px var(--negro) !important;
     font-size: 2.5rem;
     margin-bottom: 2rem;
     text-align: center;
@@ -486,7 +488,8 @@ h2 {
         font-size: 70px;
     }
     
-    h2 {
+    .sobre-mi h2,
+    .seccion-proyectos h2 {
         font-size: 3.5rem;
     }
 }
@@ -503,7 +506,8 @@ h2 {
         width: 95%;
     }
 
-    h2 {
+    .sobre-mi h2,
+    .seccion-proyectos h2 {
         font-size: 2rem;
     }
     
@@ -512,5 +516,3 @@ h2 {
         padding: 10px;
     }
 }
-
-
