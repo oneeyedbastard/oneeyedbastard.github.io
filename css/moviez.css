@@ -1,8 +1,9 @@
+/* --- VARIABLES DE COLOR (Paleta "Vino y Oro") --- */
 :root {
-    --fondo-principal: #662222;    
-    --fondo-secundario: #842A3B;  
-    --acento-suave: #A3485A;       
-    --texto-destacado: #F5DAA7;    
+    --fondo-principal: #662222;    /* Rojo Oscuro / Vino */
+    --fondo-secundario: #842A3B;   /* Rojo Carmesí (para navbar/tarjetas) */
+    --acento-suave: #A3485A;       /* Rosa viejo (para hovers/detalles) */
+    --texto-destacado: #F5DAA7;    /* Crema Dorado (para texto y bordes) */
 }
 
 /* Estilo general */
@@ -18,7 +19,7 @@ body {
     font-family: 'Jost', sans-serif;
     font-weight: 900;
     color: var(--texto-destacado);
-    text-shadow: 2px 2px 0px #000000; 
+    text-shadow: 2px 2px 0px #000000; /* Sombra sutil para despegarlo del fondo */
 }
 
 .logo a {
@@ -66,17 +67,18 @@ h2 {
     color: var(--texto-destacado);
     font-family: 'Jost', sans-serif;
     margin-top: 35px;
-    border-left: 5px solid var(--acento-suave);
+    border-left: 5px solid var(--acento-suave); /* Línea decorativa al lado */
     padding-left: 15px;
 }
 
 /* Tarjetas de películas destacadas */
 .card {
-    background-color: var(--fondo-secundario);
+    background-color: var(--fondo-secundario); /* Un tono más claro que el fondo */
     color: var(--texto-destacado);
     border: 1px solid var(--acento-suave);
 }
 
+/* Enlaces a las películas dentro de cards */
 .card a {
     color: var(--texto-destacado);
     text-decoration: underline;
@@ -96,22 +98,22 @@ h2 {
 
 /* Botones Generales (Ver Más, etc) */
 .btn {
-    background-color: var(--acento-suave);
+    background-color: var(--acento-suave); /* El tono rosa viejo */
     color: white;
     font-weight: bold;
 }
 
 .btn:hover {
-    background-color: var(--texto-destacado); 
-    color: var(--fondo-principal); 
+    background-color: var(--texto-destacado); /* Pasa a color crema */
+    color: var(--fondo-principal); /* Letra oscura */
     border: none;
-    box-shadow: 0 0 15px rgba(245, 218, 167, 0.4); 
+    box-shadow: 0 0 15px rgba(245, 218, 167, 0.4); /* Resplandor dorado */
 }
 
 /* Input de búsqueda */
 .form-control {
-    background-color: var(--texto-destacado);
-    color: var(--fondo-principal); 
+    background-color: var(--texto-destacado); /* Fondo crema para escribir */
+    color: var(--fondo-principal); /* Letra vino oscuro */
     width: 250px;
     font-size: 12px;
     border: none;
@@ -122,7 +124,7 @@ h2 {
     opacity: 0.7;
 }
 
-
+/* Cambio de color al enfocar el input de búsqueda */
 .form-control:focus {
     background-color: white;
     color: black;
@@ -149,7 +151,7 @@ h3 {
 .pelicula-card img:hover {
     cursor: pointer;
     transform: scale(1.1);
-    border-color: var(--texto-destacado); 
+    border-color: var(--texto-destacado); /* Borde dorado al pasar el mouse */
     box-shadow: 0 10px 20px rgba(0,0,0,0.5);
 }
 
