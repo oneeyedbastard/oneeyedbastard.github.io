@@ -1,16 +1,25 @@
 /* --- 1. VARIABLES & PALETA --- */
 :root {
-    --color-primary: #96B6C5;    /* Celeste Grisáceo */
-    --color-secondary: #ADC4CE;  /* Gris Azulado Claro */
-    --color-accent: #EEE0C9;     /* Crema/Beige */
-    --color-text: #F1F0E8;       /* Blanco Hueso */
-    
+    --color-primary: #96B6C5;
+    /* Celeste Grisáceo */
+    --color-secondary: #ADC4CE;
+    /* Gris Azulado Claro */
+    --color-accent: #EEE0C9;
+    /* Crema/Beige */
+    --color-text: #F1F0E8;
+    /* Blanco Hueso */
+
     /* Variables funcionales */
-    --shadow-color: #3F525E;     /* Sombra oscura para contraste */
+    --shadow-color: #3F525E;
+    /* Sombra oscura para contraste */
     --glass-bg: rgba(150, 182, 197, 0.2);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
     font-family: 'Newsreader', serif;
@@ -24,7 +33,10 @@ body {
 /* --- 2. TEXTURA RETRO --- */
 .noise-overlay {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
     z-index: 900;
     opacity: 0.12;
@@ -37,7 +49,7 @@ header {
     padding-top: 1rem;
     text-align: center;
     position: relative;
-    z-index: 50; /* Por encima del collage */
+    z-index: 50;
 }
 
 header h1 {
@@ -47,22 +59,31 @@ header h1 {
     letter-spacing: 4px;
     margin: 0;
     position: relative;
-    text-shadow: 4px 4px 0px var(--shadow-color); 
+    text-shadow: 4px 4px 0px var(--shadow-color);
 }
 
-h1 a { text-decoration: none; color: var(--color-text); }
+h1 a {
+    text-decoration: none;
+    color: var(--color-text);
+}
 
 /* Efecto Glitch */
-header h1:before, header h1:after {
+header h1:before,
+header h1:after {
     content: attr(data-glitch);
-    position: absolute; top: 0; left: 0; width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     opacity: 0.8;
 }
+
 header h1:before {
     color: var(--color-accent);
     animation: glitch-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
     z-index: -1;
 }
+
 header h1:after {
     color: var(--shadow-color);
     animation: glitch-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
@@ -70,24 +91,45 @@ header h1:after {
 }
 
 @keyframes glitch-color {
-    0% { transform: translate(0); }
-    20% { transform: translate(-2px, 2px); }
-    40% { transform: translate(-2px, -2px); }
-    60% { transform: translate(2px, 2px); }
-    80% { transform: translate(2px, -2px); }
-    to { transform: translate(0); }
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        transform: translate(-2px, -2px);
+    }
+
+    60% {
+        transform: translate(2px, 2px);
+    }
+
+    80% {
+        transform: translate(2px, -2px);
+    }
+
+    to {
+        transform: translate(0);
+    }
 }
 
 .menu-icon-img {
     width: 50px;
     position: absolute;
-    top: 20px; right: 20px;
+    top: 20px;
+    right: 20px;
     filter: drop-shadow(2px 2px 0px var(--shadow-color));
-    transition: transform 0.8s ease-in-out; 
+    transition: transform 0.8s ease-in-out;
     cursor: pointer;
     z-index: 100;
 }
-.menu-icon-img:hover { transform: rotate(360deg) scale(1.1); }
+
+.menu-icon-img:hover {
+    transform: rotate(360deg) scale(1.1);
+}
 
 /* --- 4. CONTENEDOR PRINCIPAL & COLLAGE --- */
 .main-container {
@@ -97,14 +139,13 @@ header h1:after {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden; 
+    overflow: hidden;
     padding-bottom: 120px;
 }
 
-/* Envolvemos contenido para que flote sobre el collage */
 .contenedor-contenido-principal {
     position: relative;
-    z-index: 20; /* Importante: Arriba de las fotos */
+    z-index: 20; 
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -114,55 +155,66 @@ header h1:after {
 /* --- ESTILOS DEL COLLAGE --- */
 .collage-fondo {
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    z-index: 1; /* Al fondo */
-    
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 Columnas */
+    grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: minmax(200px, auto);
-    grid-auto-flow: dense; 
+    grid-auto-flow: dense;
     gap: 15px;
     padding: 20px;
-    
-    /* Agregamos esto para centrar las imágenes en sus celdas */
+
     align-items: center;
     justify-items: center;
-    
-    opacity: 0.6; /* Transparencia para que se lea el texto */
-    mix-blend-mode: normal; /* Normal para que se vean bien los colores */
+
+    opacity: 0.7;
+    mix-blend-mode: normal;
 }
 
-/* --- AQUÍ ESTÁ EL ARREGLO DE LAS IMÁGENES --- */
+/* --- IMÁGENES CON FILTRO CELESTE --- */
 .collage-img {
-    width: 100%; height: 100%;
-    
-    /* 1. Usamos contain para que NO se recorten */
-    object-fit: contain; 
-    
-    /* 2. Usamos drop-shadow para que la sombra siga la silueta */
-    filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.5));
-    box-shadow: none; /* Quitamos la sombra cuadrada */
-    
-    /* 3. Quitamos el borde porque con contain queda feo flotando */
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: grayscale(100%) sepia(100%) hue-rotate(170deg) saturate(50%) brightness(1.1) contrast(0.9) drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+    box-shadow: none;
     border: none;
-    
     transition: all 0.3s ease;
 }
 
-/* Rotaciones para efecto desordenado */
-.collage-img:nth-child(odd) { transform: rotate(-3deg) scale(1.02); }
-.collage-img:nth-child(even) { transform: rotate(4deg) scale(0.98); z-index: 2; }
+/* Rotaciones para desorden */
+.collage-img:nth-child(odd) {
+    transform: rotate(-3deg) scale(1.02);
+}
 
-/* Tamaños especiales (Grid) */
-.img-retrato { grid-row: span 2; }
-.img-cuerpo-entero { grid-row: span 2; }
-.img-grito { grid-column: span 2; }
+.collage-img:nth-child(even) {
+    transform: rotate(4deg) scale(0.98);
+    z-index: 2;
+}
+
+/* Tamaños especiales Grid */
+.img-retrato {
+    grid-row: span 2;
+}
+
+.img-cuerpo-entero {
+    grid-row: span 2;
+}
+
+.img-grito {
+    grid-column: span 2;
+}
 
 .collage-img:hover {
     transform: rotate(0deg) scale(1.1);
     z-index: 10;
-    filter: drop-shadow(8px 8px 10px rgba(0,0,0,0.6));
+
+    /* En hover repetimos el filtro de color pero aumentamos la sombra */
+    filter: grayscale(100%) sepia(100%) hue-rotate(170deg) saturate(50%) brightness(1.1) contrast(0.9) drop-shadow(8px 8px 12px rgba(0, 0, 0, 0.7));
+
     opacity: 1;
 }
 
@@ -172,10 +224,9 @@ header h1:after {
     max-width: 900px;
     padding: 2rem;
     text-align: center;
-    /* Fondo un poco más oscuro para que el texto resalte sobre las fotos */
-    background: radial-gradient(circle, rgba(63, 82, 94, 0.7) 0%, rgba(0,0,0,0) 70%);
-    backdrop-filter: blur(2px); /* Desenfoca un poquito lo que hay atrás */
-    border-radius: 50%;
+    background: radial-gradient(circle, rgba(63, 82, 94, 0.8) 0%, rgba(0, 0, 0, 0) 70%);
+    backdrop-filter: blur(2px);
+    border-radius: 10px;
 }
 
 .contenedor-frase::before {
@@ -183,7 +234,8 @@ header h1:after {
     font-family: 'Six Caps', sans-serif;
     font-size: clamp(8rem, 20vw, 16rem);
     position: absolute;
-    top: -50px; left: -10px;
+    top: -50px;
+    left: -10px;
     color: var(--color-accent);
     opacity: 0.8;
     line-height: 0;
@@ -193,10 +245,10 @@ header h1:after {
 
 #fraseDiego {
     font-family: 'Montserrat', sans-serif;
-    font-size: clamp(1.5rem, 4.5vw, 3rem); 
+    font-size: clamp(1.5rem, 4.5vw, 3rem);
     font-weight: 900;
     line-height: 1.2;
-    text-shadow: 3px 3px 0px var(--shadow-color), 0 0 15px rgba(0,0,0,0.5);
+    text-shadow: 3px 3px 0px var(--shadow-color), 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 /* --- 6. BARRA DE CONTROL --- */
@@ -209,7 +261,12 @@ header h1:after {
     z-index: 1000;
 }
 
-button { cursor: pointer; border: none; transition: all 0.3s ease; outline: none; }
+button {
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    outline: none;
+}
 
 .btn-principal {
     background: var(--color-accent);
@@ -237,28 +294,35 @@ button { cursor: pointer; border: none; transition: all 0.3s ease; outline: none
 }
 
 .btn-icon {
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
     color: var(--color-text);
-    width: 52px; height: 52px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 1.2rem;
     border: 1px solid var(--color-text);
     box-shadow: 3px 3px 0px var(--shadow-color);
 }
 
-.btn-icon:hover { background: var(--color-accent); color: #2A3B45; }
+.btn-icon:hover {
+    background: var(--color-accent);
+    color: #2A3B45;
+}
 
 .contador-badge {
     position: absolute;
-    top: -30px; left: 50%;
+    top: -30px;
+    left: 50%;
     transform: translateX(-50%);
     font-size: 0.9rem;
     font-weight: 800;
     color: var(--color-accent);
     text-shadow: 1px 1px 0px var(--shadow-color);
     font-family: 'Montserrat', sans-serif;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.3);
     padding: 2px 10px;
     border-radius: 10px;
 }
@@ -276,14 +340,17 @@ button { cursor: pointer; border: none; transition: all 0.3s ease; outline: none
 /* --- 8. RESPONSIVE (CELULAR) --- */
 @media (max-width: 768px) {
     .collage-fondo {
-        grid-template-columns: repeat(2, 1fr); /* 2 Columnas en celus */
+        grid-template-columns: repeat(2, 1fr);
         grid-auto-rows: minmax(150px, auto);
         gap: 10px;
         padding: 10px;
-        opacity: 0.4; /* Más transparente para leer mejor */
+        opacity: 0.5;
+        /* Un poco más de visibilidad en móvil */
     }
-    
-    .img-grito { grid-column: span 1; } /* Resetear spans complejos */
+
+    .img-grito {
+        grid-column: span 1;
+    }
 
     .control-deck {
         position: fixed;
@@ -298,7 +365,7 @@ button { cursor: pointer; border: none; transition: all 0.3s ease; outline: none
         border: 1px solid var(--color-text);
         justify-content: space-between;
         margin-top: 0;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
         gap: 10px;
         z-index: 9999;
     }
@@ -308,17 +375,18 @@ button { cursor: pointer; border: none; transition: all 0.3s ease; outline: none
         border-radius: 30px;
         padding: 12px;
         font-size: 0.9rem;
-        box-shadow: none; 
+        box-shadow: none;
         border: 1px solid var(--color-secondary);
     }
-    
-    .btn-icon {
-        box-shadow: none; border: none;
-        background: transparent; width: 40px;
-    }
-    
-    .contador-badge { display: none; }
-    
-    .contenido-seccion { padding-bottom: 50px; }
-}
 
+    .btn-icon {
+        box-shadow: none;
+        border: none;
+        background: transparent;
+        width: 40px;
+    }
+
+    .contador-badge {
+        display: none;
+    }
+}
