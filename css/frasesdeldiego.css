@@ -1,16 +1,13 @@
 /* --- 1. VARIABLES & PALETA --- */
 :root {
-    /* Tu Paleta (Original) */
-    --color-primary: #96B6C5;    /* Celeste Grisáceo (Fondo) */
+    --color-primary: #96B6C5;    /* Celeste Grisáceo */
     --color-secondary: #ADC4CE;  /* Gris Azulado Claro */
-    --color-accent: #EEE0C9;     /* Crema/Beige (Botones/Detalles) */
-    --color-text: #F1F0E8;       /* Blanco Hueso (Texto) */
+    --color-accent: #EEE0C9;     /* Crema/Beige */
+    --color-text: #F1F0E8;       /* Blanco Hueso */
     
-    /* Variables funcionales de alto contraste */
-    /* Creamos una sombra oscura mezclando tu azul con negro para que el texto blanco se lea bien */
-    --shadow-color: #3F525E;     
+    /* Variables funcionales */
+    --shadow-color: #3F525E;     /* Sombra oscura para contraste */
     --glass-bg: rgba(150, 182, 197, 0.2);
-    --glass-border: rgba(241, 240, 232, 0.4);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -19,19 +16,18 @@ body {
     font-family: 'Newsreader', serif;
     color: var(--color-text);
     background-color: var(--color-primary);
-    /* Degradado sutil para dar profundidad */
     background: radial-gradient(circle at 50% 30%, var(--color-secondary), var(--color-primary));
     overflow-x: hidden;
     min-height: 100vh;
 }
 
-/* --- 2. TEXTURA RETRO (RUIDO) --- */
+/* --- 2. TEXTURA RETRO --- */
 .noise-overlay {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
     pointer-events: none;
     z-index: 900;
-    opacity: 0.12; /* Un toque más visible para ese efecto VHS/80s */
+    opacity: 0.12;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E");
     mix-blend-mode: overlay;
 }
@@ -41,7 +37,7 @@ header {
     padding-top: 1rem;
     text-align: center;
     position: relative;
-    z-index: 10;
+    z-index: 50; /* Por encima del collage */
 }
 
 header h1 {
@@ -51,14 +47,10 @@ header h1 {
     letter-spacing: 4px;
     margin: 0;
     position: relative;
-    /* Sombra sólida para separar del fondo claro */
     text-shadow: 4px 4px 0px var(--shadow-color); 
 }
 
-h1 a {
-    text-decoration: none;
-    color: var(--color-text);   
-}
+h1 a { text-decoration: none; color: var(--color-text); }
 
 /* Efecto Glitch */
 header h1:before, header h1:after {
@@ -89,36 +81,101 @@ header h1:after {
 .menu-icon-img {
     width: 50px;
     position: absolute;
-    top: 20px; 
-    right: 20px;
+    top: 20px; right: 20px;
     filter: drop-shadow(2px 2px 0px var(--shadow-color));
     transition: transform 0.8s ease-in-out; 
     cursor: pointer;
     z-index: 100;
 }
+.menu-icon-img:hover { transform: rotate(360deg) scale(1.1); }
 
-.menu-icon-img:hover {
-    transform: rotate(360deg) scale(1.1);
-}
-
-/* --- 4. CONTENEDOR PRINCIPAL --- */
+/* --- 4. CONTENEDOR PRINCIPAL & COLLAGE --- */
 .main-container {
+    position: relative;
     min-height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
+    overflow: hidden; 
     padding-bottom: 120px;
+}
+
+/* Envolvemos contenido para que flote sobre el collage */
+.contenedor-contenido-principal {
+    position: relative;
+    z-index: 20; /* Importante: Arriba de las fotos */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- ESTILOS DEL COLLAGE --- */
+.collage-fondo {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1; /* Al fondo */
+    
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Columnas */
+    grid-auto-rows: minmax(200px, auto);
+    grid-auto-flow: dense; 
+    gap: 15px;
+    padding: 20px;
+    
+    /* Agregamos esto para centrar las imágenes en sus celdas */
+    align-items: center;
+    justify-items: center;
+    
+    opacity: 0.6; /* Transparencia para que se lea el texto */
+    mix-blend-mode: normal; /* Normal para que se vean bien los colores */
+}
+
+/* --- AQUÍ ESTÁ EL ARREGLO DE LAS IMÁGENES --- */
+.collage-img {
+    width: 100%; height: 100%;
+    
+    /* 1. Usamos contain para que NO se recorten */
+    object-fit: contain; 
+    
+    /* 2. Usamos drop-shadow para que la sombra siga la silueta */
+    filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.5));
+    box-shadow: none; /* Quitamos la sombra cuadrada */
+    
+    /* 3. Quitamos el borde porque con contain queda feo flotando */
+    border: none;
+    
+    transition: all 0.3s ease;
+}
+
+/* Rotaciones para efecto desordenado */
+.collage-img:nth-child(odd) { transform: rotate(-3deg) scale(1.02); }
+.collage-img:nth-child(even) { transform: rotate(4deg) scale(0.98); z-index: 2; }
+
+/* Tamaños especiales (Grid) */
+.img-retrato { grid-row: span 2; }
+.img-cuerpo-entero { grid-row: span 2; }
+.img-grito { grid-column: span 2; }
+
+.collage-img:hover {
+    transform: rotate(0deg) scale(1.1);
+    z-index: 10;
+    filter: drop-shadow(8px 8px 10px rgba(0,0,0,0.6));
+    opacity: 1;
 }
 
 /* --- 5. LA FRASE --- */
 .contenedor-frase {
     position: relative;
     max-width: 900px;
-    padding: 0 2rem;
-    z-index: 20;
+    padding: 2rem;
     text-align: center;
+    /* Fondo un poco más oscuro para que el texto resalte sobre las fotos */
+    background: radial-gradient(circle, rgba(63, 82, 94, 0.7) 0%, rgba(0,0,0,0) 70%);
+    backdrop-filter: blur(2px); /* Desenfoca un poquito lo que hay atrás */
+    border-radius: 50%;
 }
 
 .contenedor-frase::before {
@@ -128,19 +185,18 @@ header h1:after {
     position: absolute;
     top: -50px; left: -10px;
     color: var(--color-accent);
-    opacity: 0.5;
+    opacity: 0.8;
     line-height: 0;
     pointer-events: none;
-    text-shadow: 2px 2px 0px var(--shadow-color);
+    text-shadow: 3px 3px 0px var(--shadow-color);
 }
 
 #fraseDiego {
     font-family: 'Montserrat', sans-serif;
-    font-size: clamp(1.4rem, 4vw, 2.8rem); 
+    font-size: clamp(1.5rem, 4.5vw, 3rem); 
     font-weight: 900;
     line-height: 1.2;
-    /* Sombra clave para legibilidad sobre fondo claro */
-    text-shadow: 2px 2px 0px var(--shadow-color), 0 0 30px rgba(0,0,0,0.15);
+    text-shadow: 3px 3px 0px var(--shadow-color), 0 0 15px rgba(0,0,0,0.5);
 }
 
 /* --- 6. BARRA DE CONTROL --- */
@@ -153,16 +209,11 @@ header h1:after {
     z-index: 1000;
 }
 
-button {
-    cursor: pointer;
-    border: none;
-    transition: all 0.3s ease;
-    outline: none;
-}
+button { cursor: pointer; border: none; transition: all 0.3s ease; outline: none; }
 
 .btn-principal {
     background: var(--color-accent);
-    color: #2A3B45; /* Texto oscuro para contraste con el botón crema */
+    color: #2A3B45;
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
     font-size: 1rem;
@@ -171,7 +222,7 @@ button {
     text-transform: uppercase;
     letter-spacing: 1.5px;
     border: 2px solid var(--color-text);
-    box-shadow: 5px 5px 0px var(--shadow-color); /* Sombra dura estilo 80s */
+    box-shadow: 5px 5px 0px var(--shadow-color);
 }
 
 .btn-principal:hover {
@@ -186,7 +237,7 @@ button {
 }
 
 .btn-icon {
-    background: rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.2);
     color: var(--color-text);
     width: 52px; height: 52px;
     border-radius: 50%;
@@ -196,76 +247,51 @@ button {
     box-shadow: 3px 3px 0px var(--shadow-color);
 }
 
-.btn-icon:hover {
-    background: var(--color-accent);
-    color: #2A3B45;
-}
+.btn-icon:hover { background: var(--color-accent); color: #2A3B45; }
 
 .contador-badge {
     position: absolute;
-    top: -30px;
-    left: 50%;
+    top: -30px; left: 50%;
     transform: translateX(-50%);
     font-size: 0.9rem;
     font-weight: 800;
     color: var(--color-accent);
     text-shadow: 1px 1px 0px var(--shadow-color);
     font-family: 'Montserrat', sans-serif;
-    background: rgba(0,0,0,0.1);
-    padding: 2px 8px;
+    background: rgba(0,0,0,0.3);
+    padding: 2px 10px;
     border-radius: 10px;
 }
 
-/* --- 7. IMÁGENES DE FONDO (POSICIONES INTERCAMBIADAS) --- */
-.background-image {
-    position: absolute;
-    bottom: 0;
-    z-index: 1;
-    pointer-events: none;
-    mix-blend-mode: luminosity; /* Se fusiona con el celeste */
-    opacity: 0.55;
-    transition: all 0.5s ease;
-    filter: contrast(1.1) grayscale(0.2);
-}
-
-/* IMPORTANTE: Aquí se hace el cambio que pediste.
-   Aunque en el HTML dice "right-img" (Diego01), lo forzamos a la IZQUIERDA.
-   Aunque dice "left-img" (Diego02), lo forzamos a la DERECHA.
-*/
-
-/* La imagen de Diego01 (que tiene clase .right-img en HTML) ahora va a la IZQUIERDA */
-.right-img {
-    left: -20px; /* Pegado a la izquierda */
-    right: auto;
-    height: 55vh;
-}
-
-/* La imagen de Diego02 (que tiene clase .left-img en HTML) ahora va a la DERECHA */
-.left-img {
-    right: 0px; /* Bien pegada al fondo a la derecha */
-    left: auto;
-    height: 52vh;
-}
-
-/* --- 8. SECCIÓN BIOGRAFÍA --- */
+/* --- 7. BIOGRAFÍA --- */
 #biografia {
-    min-height: 100vh; /* Usar min-height para evitar cortes en pantallas chicas */
+    min-height: 100vh;
     background-color: var(--color-secondary);
-    color: #2A3B45; /* Texto oscuro en esta sección para descansar la vista */
+    color: #2A3B45;
     position: relative;
     z-index: 20;
     border-top: 5px solid var(--color-accent);
 }
 
-/* --- 9. RESPONSIVE (CELULAR) --- */
+/* --- 8. RESPONSIVE (CELULAR) --- */
 @media (max-width: 768px) {
+    .collage-fondo {
+        grid-template-columns: repeat(2, 1fr); /* 2 Columnas en celus */
+        grid-auto-rows: minmax(150px, auto);
+        gap: 10px;
+        padding: 10px;
+        opacity: 0.4; /* Más transparente para leer mejor */
+    }
+    
+    .img-grito { grid-column: span 1; } /* Resetear spans complejos */
+
     .control-deck {
         position: fixed;
         bottom: 25px;
         left: 50%;
         transform: translateX(-50%);
         width: 92%;
-        background: rgba(150, 182, 197, 0.95); /* Color primario con opacidad */
+        background: rgba(150, 182, 197, 0.95);
         backdrop-filter: blur(12px);
         padding: 12px 20px;
         border-radius: 50px;
@@ -287,29 +313,12 @@ button {
     }
     
     .btn-icon {
-        box-shadow: none;
-        border: none;
-        background: transparent;
-        width: 40px;
-    }
-
-    /* Ajuste de imágenes para celular */
-    .right-img { /* Diego 01 a la izquierda */
-        height: 38vh;
-        left: -30px;
-        opacity: 0.35;
-    }
-    
-    .left-img { /* Diego 02 a la derecha */
-        height: 35vh;
-        right: -20px;
-        opacity: 0.35;
+        box-shadow: none; border: none;
+        background: transparent; width: 40px;
     }
     
     .contador-badge { display: none; }
     
-    /* Ajuste para que el texto de la bio no quede pegado */
-    .contenido-seccion {
-        padding-bottom: 50px;
-    }
+    .contenido-seccion { padding-bottom: 50px; }
 }
+
