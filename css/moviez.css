@@ -1,9 +1,19 @@
-/* --- VARIABLES DE COLOR (Paleta "Vino y Oro") --- */
+/* --- VARIABLES DE COLOR (Paleta "Vino y Oro" Alto Contraste) --- */
 :root {
-    --fondo-principal: #662222;    /* Rojo Oscuro / Vino */
-    --fondo-secundario: #842A3B;   /* Rojo Carmesí (para navbar/tarjetas) */
-    --acento-suave: #A3485A;       /* Rosa viejo (para hovers/detalles) */
-    --texto-destacado: #F5DAA7;    /* Crema Dorado (para texto y bordes) */
+    /* Fondo mucho más oscuro para que el texto resalte al máximo */
+    --fondo-principal: #1a0505;    /* Vino casi negro / Sangre seca */
+    
+    /* Rojo intermedio para elementos de UI (Navbar/Cards) */
+    --fondo-secundario: #4a1212;   /* Rojo Profundo */
+    
+    /* Color de acción más vibrante para llamar la atención */
+    --acento-suave: #D64045;       /* Rojo Carmesí Intenso */
+    
+    /* Texto más brillante y limpio */
+    --texto-destacado: #FFE5B4;    /* Crema/Oro Pálido Brillante */
+    
+    /* Variable extra para sombras de profundidad */
+    --sombra-oscura: rgba(0, 0, 0, 0.85);
 }
 
 /* Estilo general */
@@ -11,27 +21,38 @@ body {
     background-color: var(--fondo-principal);
     color: var(--texto-destacado);
     font-family: 'Jost', sans-serif;
+    /* Un degradado sutil para que no sea plano */
+    background-image: radial-gradient(circle at center, #2e0b0b 0%, var(--fondo-principal) 100%);
+    min-height: 100vh;
 }
 
 /* Logo */
 .logo {
-    font-size: 45px;
+    font-size: 48px; /* Un poco más grande */
     font-family: 'Jost', sans-serif;
     font-weight: 900;
     color: var(--texto-destacado);
-    text-shadow: 2px 2px 0px #000000; /* Sombra sutil para despegarlo del fondo */
+    /* Sombra dura para máximo contraste */
+    text-shadow: 3px 3px 0px var(--acento-suave), 6px 6px 0px #000; 
+    letter-spacing: -1px;
 }
 
 .logo a {
     text-decoration: none;
     color: var(--texto-destacado);
+    transition: color 0.3s ease;
+}
+
+.logo a:hover {
+    color: #fff; /* Blanco puro al pasar el mouse */
 }
 
 /* Barra de navegación */
 .navbar {
     background-color: var(--fondo-secundario);
-    border-bottom: 2px solid var(--acento-suave);
+    border-bottom: 3px solid var(--acento-suave);
     font-family: 'Jost', sans-serif;
+    box-shadow: 0 4px 15px var(--sombra-oscura); /* Sombra para despegarla del fondo */
 }
 
 .navbar a {
@@ -41,120 +62,182 @@ body {
 /* Botones de navegación */
 .nav-link {
     color: var(--texto-destacado) !important;
-    font-weight: 500;
+    font-weight: 600; /* Más grueso para legibilidad */
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
 }
 
 .nav-link:hover {
-    color: white !important;
+    color: #fff !important;
     text-shadow: 0 0 10px var(--acento-suave);
+    transform: translateY(-2px);
 }
 
-/* Botón de búsqueda (Outline) */
+/* Botón de búsqueda (Outline) - Mejorado */
 .btn-outline-success {
     background-color: transparent;
-    border-color: var(--texto-destacado);
+    border: 2px solid var(--texto-destacado);
     color: var(--texto-destacado);
+    font-weight: bold;
+    transition: all 0.3s ease;
 }
 
 .btn-outline-success:hover {
     background-color: var(--texto-destacado);
-    color: var(--fondo-principal);
+    color: var(--fondo-principal); /* Contraste negro sobre dorado */
     border-color: var(--texto-destacado);
+    box-shadow: 0 0 15px rgba(255, 229, 180, 0.4);
 }
 
 /* Título de sección */
 h2 {
     color: var(--texto-destacado);
     font-family: 'Jost', sans-serif;
-    margin-top: 35px;
-    border-left: 5px solid var(--acento-suave); /* Línea decorativa al lado */
-    padding-left: 15px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-left: 6px solid var(--acento-suave);
+    padding-left: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px var(--sombra-oscura);
 }
 
 /* Tarjetas de películas destacadas */
 .card {
-    background-color: var(--fondo-secundario); /* Un tono más claro que el fondo */
+    background-color: var(--fondo-secundario);
     color: var(--texto-destacado);
-    border: 1px solid var(--acento-suave);
+    border: 1px solid rgba(255, 229, 180, 0.1); /* Borde sutil */
+    box-shadow: 0 10px 20px var(--sombra-oscura); /* Mucha profundidad */
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--acento-suave);
 }
 
 /* Enlaces a las películas dentro de cards */
 .card a {
+    color: #fff; /* Blanco para destacar sobre el rojo oscuro */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.card a:hover {
     color: var(--texto-destacado);
-    text-decoration: underline;
-    text-decoration-color: var(--acento-suave);
+    text-shadow: 0 0 5px var(--acento-suave);
 }
 
 /* Modal */
 .modal-content {
     background-color: var(--fondo-principal);
     color: var(--texto-destacado);
-    border: 2px solid var(--acento-suave);
+    border: 2px solid var(--texto-destacado);
+    box-shadow: 0 0 50px rgba(0,0,0,0.9);
 }
 
-.modal-header, .modal-footer {
-    border-color: var(--acento-suave);
+.modal-header {
+    border-bottom: 1px solid var(--acento-suave);
+    background-color: var(--fondo-secundario);
+}
+
+.modal-footer {
+    border-top: 1px solid var(--acento-suave);
 }
 
 /* Botones Generales (Ver Más, etc) */
-.btn {
-    background-color: var(--acento-suave); /* El tono rosa viejo */
-    color: white;
-    font-weight: bold;
+.btn-primary, .btn {
+    background-color: var(--acento-suave);
+    color: #fff;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    padding: 10px 20px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .btn:hover {
-    background-color: var(--texto-destacado); /* Pasa a color crema */
-    color: var(--fondo-principal); /* Letra oscura */
-    border: none;
-    box-shadow: 0 0 15px rgba(245, 218, 167, 0.4); /* Resplandor dorado */
+    background-color: var(--texto-destacado);
+    color: #3e0e0e; /* Letra oscura para máximo contraste */
+    box-shadow: 0 0 20px rgba(214, 64, 69, 0.6); /* Resplandor rojo */
+    transform: scale(1.05);
 }
 
 /* Input de búsqueda */
 .form-control {
-    background-color: var(--texto-destacado); /* Fondo crema para escribir */
-    color: var(--fondo-principal); /* Letra vino oscuro */
+    background-color: rgba(255, 255, 255, 0.1); /* Semitransparente */
+    color: var(--texto-destacado);
+    border: 1px solid var(--acento-suave);
     width: 250px;
-    font-size: 12px;
-    border: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
 }
 
 .form-control::placeholder {
-    color: var(--fondo-secundario);
-    opacity: 0.7;
+    color: rgba(255, 229, 180, 0.5);
 }
 
-/* Cambio de color al enfocar el input de búsqueda */
 .form-control:focus {
-    background-color: white;
-    color: black;
-    box-shadow: 0 0 0 3px var(--acento-suave);
+    background-color: var(--texto-destacado);
+    color: #000;
+    border-color: var(--texto-destacado);
+    box-shadow: 0 0 15px var(--acento-suave);
+    outline: none;
 }
 
 h3 {
-    font-size: 16px;
+    font-size: 1.1rem;
     text-align: center;
-    letter-spacing: 2px;
-    margin-top: 10px;
+    letter-spacing: 1px;
+    margin-top: 15px;
     color: var(--texto-destacado);
+    font-weight: 600;
+}
+
+.pelicula-card {
+    /* Contenedor de la imagen */
+    overflow: hidden;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 5px 15px var(--sombra-oscura);
+    border: 1px solid transparent;
+    transition: border-color 0.3s ease;
 }
 
 .pelicula-card img {
-    border: 2px solid transparent;
+    width: 100%;
+    height: auto;
+    display: block;
     border-radius: 10px;
-    margin: 0;
-    padding: 0;
-    transition: all cubic-bezier(0.5, 0, 0.1, 1) 0.5s;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Efecto Hover en Películas */
-.pelicula-card img:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-    border-color: var(--texto-destacado); /* Borde dorado al pasar el mouse */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+.pelicula-card:hover {
+    border-color: var(--texto-destacado);
+    box-shadow: 0 0 25px rgba(214, 64, 69, 0.3); /* Resplandor sutil */
 }
 
-button {
-    border: none;
+.pelicula-card:hover img {
+    cursor: pointer;
+    transform: scale(1.05);
+    filter: brightness(1.1); /* Se ilumina un poco */
+}
+
+/* Scrollbar personalizada (Bonus para Chrome/Edge) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--fondo-principal);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--acento-suave);
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--texto-destacado);
 }
