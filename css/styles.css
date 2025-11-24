@@ -1,115 +1,272 @@
+/* =========================================
+   1. VARIABLES Y CONFIGURACIÓN BASE
+   ========================================= */
+   :root {
+    --color-naranja: #EF9C66;
+    --color-crema: #FCDC94;
+    --color-oliva: #C8CFA0;
+    --color-turquesa: #78ABA8;
+    --negro: #1c2023;
+    --blanco: #ffffff;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 * {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  letter-spacing: 1px;
-  font-family: 'Alfa Slab One', serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 0.5px;
 }
 
-body {
-  height: 100vh;
-}
-.rectangulo-negro {
-  margin: 0 auto;
-  margin-top: 250px;
-  height: auto;
-  border: 10px solid #000000;
-  width: 85vw;
-  justify-content: center;
-  align-items: center;
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
+/* Tipografía Especial */
+h1, h2, h3, 
+.contenedor-nombre, 
+.fullstack, 
+.cuadrado-negro, 
+.navlist a, 
+.dropdown > span,
+.card-proyecto h2 a {
+    font-family: 'Alfa Slab One', serif;
 }
 
-.contenedor-nombre {
-  margin: 0 auto;
-  font-family: 'Alfa Slab One', serif;
-  font-size: 40px;
-  text-align: center;
-  width: 100%;
+/* === MEJORA DE LEGIBILIDAD === */
+button, a {
+    font-weight: 900;
 }
 
-.fullstack {
-  color: #ffffff;
-  font-family: 'Alfa Slab One', serif;
-  font-size: 20px;
-  background-color: #000000;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-   text-transform: uppercase;
-   width: 100%;
-  
+p {
+    font-weight: 400;       /* Peso normal para lectura cómoda */
+    line-height: 1.6;       /* Más aire entre líneas */
+    font-size: 1.05rem;     /* Tamaño ligeramente aumentado */
+    color: #2c2c2c;         /* Gris muy oscuro en vez de negro puro */
+    text-wrap: pretty;      /* Evita viudas y huérfanas */
+}
+
+h2 {
+    text-shadow: 4px 4px 0px rgba(255, 255, 255, 0.3);
+    color: #ffffff;    
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* =========================================
+   2. UI: BOTONES Y ENLACES INTERACTIVOS
+   ========================================= */
+
+/* Estilos Base de Botones */
+.container-buttons button,
+.contact-btn,
+.navlist a,
+.dropdown-menu a {
+    border: 3px solid var(--negro);
+    background: transparent;
+    color: var(--negro);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+/* HOVER GENERAL: Fondo Negro -> Texto Blanco */
+.container-buttons button:hover,
+.contact-btn:hover,
+.dropdown-menu a:hover {
+    background-color: var(--negro);
+    color: var(--blanco);
+}
+
+/* Estilos de Botones "Acceso" (Fondo Negro) */
+.access-button {
+    background-color: var(--negro) !important;
+    color: var(--blanco) !important;
+    border: 3px solid var(--negro);
+}
+
+.access-button:hover {
+    background-color: var(--blanco) !important;
+    color: var(--negro) !important;
+}
+
+.container-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: auto;
+    padding-top: 20px;
+}
+
+.container-buttons button {
+    padding: 8px 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.buttons, .email-btn {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.contact-btn {
+    padding: 12px 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 5px;
+    display: inline-block;
+}
+
+/* =========================================
+   3. HEADER Y NAVEGACIÓN
+   ========================================= */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    background: transparent;
+    z-index: 1000;
+    padding: 0 20px;
+}
+
+/* Menú Hamburguesa */
+.menu-icon {
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    right: 3%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1001;
+    transition: all 0.25s ease;
+}
+
+.menu-icon div {
+    width: 30px;
+    height: 4px;
+    background: var(--negro);
+    margin: 6px;
+    transition: all 0.4s ease;
+    border-radius: 5px;
+}
+
+.menu-icon.toggle .line1 { transform: rotate(-45deg) translate(-8px, 6px); }
+.menu-icon.toggle .line2 { opacity: 0; }
+.menu-icon.toggle .line3 { transform: rotate(45deg) translate(-8px, -6px); }
+
+/* Navegación */
+.navlist {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.55s ease;
+    list-style: none;
+    background-color: var(--blanco);
+    z-index: 1000;
+    border-left: 10px solid var(--negro);
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+}
+
+.navlist.open { right: 0; }
+
+.navlist a {
+    font-size: 25px;
+    margin: 15px 0;
+    font-weight: 100;
+    padding: 10px 20px;
+    border: none;
+}
+
+/* === INTERACTIVIDAD MULTICOLOR DEL MENÚ === */
+
+/* 1. NARANJA */
+.navlist li:nth-child(4n+1) a:hover {
+    background-color: var(--color-naranja);
+    color: var(--blanco);
+    border-radius: 5px;
+}
+
+/* 2. CREMA (Texto negro para contraste) */
+.navlist li:nth-child(4n+2) a:hover {
+    background-color: var(--color-crema);
+    color: var(--negro); 
+    border-radius: 5px;
+}
+
+/* 3. OLIVA */
+.navlist li:nth-child(4n+3) a:hover {
+    background-color: var(--color-oliva);
+    color: var(--negro);
+    border-radius: 5px;
+}
+
+/* 4. TURQUESA */
+.navlist li:nth-child(4n+4) a:hover {
+    background-color: var(--color-turquesa);
+    color: var(--blanco);
+    border-radius: 5px;
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+    text-align: center;
+}
+
+.dropdown > span {
+    display: block;
+    font-size: 25px;    
+    margin: 15px 0;
+    font-weight: 100;
+    padding: 10px 20px;
+    cursor: default;
+    color: var(--negro);
+    font-family: 'Alfa Slab One', serif;
+}
+
+.dropdown-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu a {
+    font-size: 18px;
+    padding: 8px 15px;
+    display: block;
+}
+
+/* =========================================
+   4. SECCIÓN HERO (PORTADA)
+   ========================================= */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
 .cuadrado-negro {
-  width: 100vw;
-  height: 100vh;
-  background-color: black;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Alfa Slab One', serif;
-  font-size: 125px;
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  pointer-events: none;
-  user-select: none;
-}
-
-@keyframes mostrarCodigo {
-  0% {
-    transform: translateY(-100%);
-  }
-
-  100% {
-    transform: translateY(0%);
-  }
-}
-@media screen and (min-width: 1200px) {
-
-  .rectangulo-negro {
-    margin: 0 auto;
-    margin-top: 250px;
-    height: 22vh;
-    border: 10px solid #000000;
-    width: 35vw;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .contenedor-nombre {
-
-   font-size: 40px;
-
-  }
-
-  .fullstack {
-    color: #ffffff;
-    font-size: 20px;
-    height: 10vh;
-    display: flex;
-   
-  }
-
-  .cuadrado-negro {
     width: 100vw;
     height: 100vh;
-    background-color: black;
-    color: rgb(255, 255, 255);
+    background-color: var(--color-turquesa);
+    color: rgba(255, 255, 255, 0.4);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Alfa Slab One', serif;
-    font-size: 150px;
+    font-size: clamp(80px, 15vw, 150px);
     overflow: hidden;
     position: fixed;
     top: 0;
@@ -117,15 +274,226 @@ body {
     z-index: -1;
     pointer-events: none;
     user-select: none;
+}
+
+.tarjeta-presentacion {
+    border: 10px solid var(--negro);
+    background-color: var(--blanco);
+    padding: 30px;
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+    z-index: 1;
+    box-shadow: 15px 15px 0px #1c202373;
+}
+
+.contenedor-nombre {
+    font-size: clamp(35px, 8vw, 65px);
+    margin-bottom: 10px;
+    line-height: 1;
+    color: var(--negro);
+}
+
+.fullstack {
+    color: var(--blanco);
+    background-color: var(--negro);
+    font-size: 18px;
+    padding: 10px;
+    text-transform: uppercase;
+    display: inline-block;
+    width: 100%;
+    font-weight: 900;
+}
+
+/* =========================================
+   5. SECCIÓN PROYECTOS Y SOBRE MÍ
+   ========================================= */
+.seccion-proyectos {
+    background-color: var(--color-naranja);
+    min-height: 100vh;
+    height: auto;
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid-proyectos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.card-proyecto {
+    border: 8px solid var(--negro);
+    background-color: var(--blanco);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 15px 15px 0px #1c202373;
+    transition: transform 0.2s ease;
     
-  }
+    /* CONTROL DE TAMAÑO */
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+}
 
-  @keyframes mostrarCodigo {
-    0% {
-      transform: translateY(-100%);
+.card-proyecto:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 18px 18px 0px var(--negro);
+}
+
+/* === LÓGICA DE SUBRAYADOS MULTICOLOR PARA PROYECTOS === */
+
+.card-proyecto h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--negro);
+    border-bottom-style: solid;
+    border-bottom-width: 4px;
+    display: inline-block;
+}
+
+/* Proyecto 1: Naranja */
+.grid-proyectos .card-proyecto:nth-child(4n+1) h3 {
+    border-bottom-color: var(--color-naranja);
+}
+
+/* Proyecto 2: Turquesa */
+.grid-proyectos .card-proyecto:nth-child(4n+2) h3 {
+    border-bottom-color: var(--color-turquesa);
+}
+
+/* Proyecto 3: Oliva */
+.grid-proyectos .card-proyecto:nth-child(4n+3) h3 {
+    border-bottom-color: var(--color-oliva);
+}
+
+/* Proyecto 4: Crema */
+.grid-proyectos .card-proyecto:nth-child(4n+4) h3 {
+    border-bottom-color: var(--color-crema);
+}
+
+
+/* Sección Sobre Mí */
+.sobre-mi {
+    background-color: var(--color-crema);
+    padding: 80px 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sobre-mi h2 {
+    color: var(--negro);
+    text-shadow: none;
+}
+
+.aboutMe {
+    width: 100%;
+}
+
+/* =========================================
+   6. FOOTER
+   ========================================= */
+.site-footer {
+    background-color: var(--negro);
+    color: var(--blanco);
+    padding: 40px 20px;
+    margin-top: auto;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-social {
+    display: flex;
+    gap: 25px;
+}
+
+.footer-social a {
+    color: var(--blanco);
+    font-size: 1.8rem;
+    transition: color 0.3s, transform 0.3s;
+    border: none;
+}
+
+.footer-social a:hover {
+    color: var(--color-turquesa);
+    transform: translateY(-5px);
+    background: transparent;
+}
+
+.footer-copyright p {
+    text-align: center;
+    line-height: 1.6;
+    color: #ccc;
+    font-weight: 400;
+}
+
+.made-with {
+    margin-top: 10px;
+    font-style: italic;
+    color: var(--color-crema);
+}
+
+.made-with i {
+    color: var(--color-naranja);
+}
+
+/* =========================================
+   7. MEDIA QUERIES
+   ========================================= */
+
+@media screen and (min-width: 900px) {
+    .navlist {
+        width: 40%;
+    }
+}
+
+/* Escritorios Grandes */
+@media screen and (min-width: 1200px) {
+    .navlist {
+        width: 30%;
+    }
+    
+    .contenedor-nombre {
+        font-size: 70px;
+    }
+    
+    h2 {
+        font-size: 3.5rem;
+    }
+}
+
+/* Móviles */
+@media screen and (max-width: 600px) {
+    .cuadrado-negro {
+        background-color: var(--color-naranja);
+    }
+    
+    .navlist {
+        width: 80%;
+    }
+    
+    .card-proyecto {
+        padding: 25px;
+        width: 95%;
     }
 
-    100% {
-      transform: translateY(0%);
+    h2 {
+        font-size: 2rem;
     }
-  }
+}
