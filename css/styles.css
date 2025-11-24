@@ -276,6 +276,19 @@ h2 {
     user-select: none;
 }
 
+/* Estilos específicos para elementos con código PHP */
+.php-code-bg {
+    pointer-events: auto !important;
+    cursor: pointer;
+    font-family: 'Alfa Slab One', serif;
+    font-size: clamp(80px, 8vw, 120px) !important;
+    white-space: pre;
+    text-align: left;
+    padding: 20px;
+    overflow: auto;
+    font-weight: 900;
+}
+
 .tarjeta-presentacion {
     border: 10px solid var(--negro);
     background-color: var(--blanco);
@@ -316,6 +329,7 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 
 .grid-proyectos {
@@ -378,7 +392,6 @@ h2 {
 .grid-proyectos .card-proyecto:nth-child(4n+4) h3 {
     border-bottom-color: var(--color-crema);
 }
-
 
 /* Sección Sobre Mí */
 .sobre-mi {
@@ -480,7 +493,7 @@ h2 {
 
 /* Móviles */
 @media screen and (max-width: 600px) {
-       
+    
     .navlist {
         width: 80%;
     }
@@ -492,6 +505,11 @@ h2 {
 
     h2 {
         font-size: 2rem;
+    }
+    
+    .php-code-bg {
+        font-size: clamp(16px, 4vw, 24px) !important;
+        padding: 10px;
     }
 }
 
