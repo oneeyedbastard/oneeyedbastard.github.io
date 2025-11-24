@@ -1,9 +1,9 @@
-// script.js - Versión unificada
+// script.js - Versión corregida para múltiples elementos PHP
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Script.js cargado correctamente');
 
     /* =========================================
-       1. EFECTO DE ESCRITURA PHP (TYPEWRITER)
+       1. EFECTO DE ESCRITURA PHP (TYPEWRITER) - CORREGIDO
        ========================================= */
     const codigosPHP = [
         "<?php\nfunction elevar(\$n) {\n  return \$n * \$n;\n}\n?>",
@@ -18,15 +18,18 @@ document.addEventListener('DOMContentLoaded', function() {
         "<?php\necho 'Hello World';\n?>"
     ];
 
-    let interval;
+    // Objeto para almacenar los intervalos de cada elemento
+    const intervals = {};
 
-    function mostrarCodigoPHP() {
-        const codigoPHPElement = document.getElementById("codigoPHP");
+    function mostrarCodigoPHP(elementId) {
+        const codigoPHPElement = document.getElementById(elementId);
         
         if (!codigoPHPElement) return;
 
         // Limpiar intervalo anterior si existe
-        clearInterval(interval);
+        if (intervals[elementId]) {
+            clearInterval(intervals[elementId]);
+        }
         
         // Elegir código al azar
         const randomIndex = Math.floor(Math.random() * codigosPHP.length);
@@ -36,31 +39,38 @@ document.addEventListener('DOMContentLoaded', function() {
         let i = 0;
 
         // Iniciar escritura
-        interval = setInterval(() => {
+        intervals[elementId] = setInterval(() => {
             if (i < codigoAleatorio.length) {
                 codigoPHPElement.textContent += codigoAleatorio.charAt(i);
                 i++;
             } else {
-                clearInterval(interval);
+                clearInterval(intervals[elementId]);
                 // Opcional: Esperar 5 segundos y escribir otro automáticamente
-                // setTimeout(mostrarCodigoPHP, 5000); 
+                // setTimeout(() => mostrarCodigoPHP(elementId), 5000); 
             }
         }, 50);
     }
 
     /* =========================================
-       2. INICIALIZACIÓN DEL EFECTO PHP
+       2. INICIALIZACIÓN DEL EFECTO PHP PARA TODOS LOS ELEMENTOS
        ========================================= */
-    // Iniciar efecto PHP
-    mostrarCodigoPHP();
+    // IDs de todos los elementos que deben mostrar código PHP
+    const phpElements = [
+        'php-bg-hero',
+        'php-bg-sobre-mi',
+        'php-bg-proyectos'
+    ];
 
-    // Si el usuario hace click en el cuadrado negro, cambia el código
-    const box = document.getElementById("codigoPHP");
-    if(box) {
-        box.addEventListener("click", mostrarCodigoPHP);
-        box.style.cursor = "pointer"; 
-        box.style.pointerEvents = "auto";
-    }
+    // Iniciar efecto PHP para todos los elementos
+    phpElements.forEach(elementId => {
+        mostrarCodigoPHP(elementId);
+        
+        // Si el usuario hace click en el cuadrado negro, cambia el código
+        const box = document.getElementById(elementId);
+        if(box) {
+            box.addEventListener("click", () => mostrarCodigoPHP(elementId));
+        }
+    });
 
     /* =========================================
        3. SCROLL SUAVE
@@ -124,32 +134,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    /* =========================================
-       6. EFECTO DE ESCRITURA PARA EL NOMBRE
-       ========================================= */
-    const nombreElement = document.querySelector('.contenedor-nombre');
-    if (nombreElement) {
-        const nombreTexto = nombreElement.textContent;
-        nombreElement.textContent = '';
-        
-        let i = 0;
-        const typeWriter = () => {
-            if (i < nombreTexto.length) {
-                nombreElement.textContent += nombreTexto.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
-            }
-        };
-        
-        // Iniciar el efecto después de un breve delay
-        setTimeout(typeWriter, 500);
-    }
+   
 
     /* =========================================
        7. VERIFICACIÓN DE ELEMENTOS
        ========================================= */
     console.log('Elementos verificados:');
-    console.log('- codigoPHP:', document.getElementById('codigoPHP') ? '✓ Encontrado' : '✗ No encontrado');
+    console.log('- Elementos PHP:', phpElements.length);
     console.log('- cards proyectos:', projectCards.length);
     console.log('- enlaces scroll suave:', links.length);
 });
