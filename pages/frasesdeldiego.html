@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
+   <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frases de Diego Maradona | El 10 Eterno</title>    
     <meta name="google-site-verification" content="z2m7ag2pEUyXjUDQVQobjg-SNN3XF5giQDek7cpBkdw" />
     
     <meta name="description" content="Generador de las frases más icónicas y memorables de Diego Armando Maradona. Descubre una nueva cita del '10' con cada clic.">
     <meta name="keywords" content="frases de maradona, frases del diego, diego armando maradona, citas maradona, la pelota no se mancha">
+    
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,43 +27,54 @@
 
     <header>
         <h1 class="glitch" data-glitch="FRASES DEL DIEGO">
-            FRASES DEL DIEGO
+            <a href="#inicio">FRASES DEL DIEGO</a>
         </h1>
-        <a href="https://oneeyedbastard.github.io/" class="icono-navegacion">
+        <a href="#biografia" class="icono-navegacion">
             <img src="../images/10.webp" alt="Ir a Biografía" class="menu-icon-img">
         </a>
     </header>
 
     <section id="inicio" class="main-container">
        
-        <div class="contenedor-frase animate__animated" id="contenedorAnimado">
-            <p id="fraseDiego">"La pelota no se mancha"</p>
+        <div class="contenedor-contenido-principal">
+            <div class="contenedor-frase animate__animated" id="contenedorAnimado">
+                <p id="fraseDiego">"La pelota no se mancha"</p>
+            </div>
+
+            <div class="control-deck">
+                <button id="botonModo" class="btn-icon" aria-label="Cambiar modo" onclick="cambiarModo()">
+                    <i class="fas fa-random"></i>
+                </button>
+                
+                <button id="cambiar-frase" class="btn-principal" onclick="cambiarFrase()">
+                    OTRA DEL 10 <i class="fas fa-futbol"></i>
+                </button>
+                
+                <button id="botonCompartir" class="btn-icon" aria-label="Compartir" onclick="compartirFrase()">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+
+                <div id="contadorFrases" class="contador-badge">1/40</div>
+            </div>
         </div>
-
-        <div class="control-deck">
-            
-            <button id="botonModo" class="btn-icon" aria-label="Cambiar modo" onclick="cambiarModo()">
-                <i class="fas fa-random"></i>
-            </button>
-            
-            <button id="cambiar-frase" class="btn-principal" onclick="cambiarFrase()">
-                OTRA DEL 10 <i class="fas fa-futbol"></i>
-            </button>
-            
-            <button id="botonCompartir" class="btn-icon" aria-label="Compartir" onclick="compartirFrase()">
-                <i class="fas fa-share-alt"></i>
-            </button>
-
-            <div id="contadorFrases" class="contador-badge">1/40</div>
-        </div>    
     
-        <img id="diego01" src="../images/diego-maradona-10.png" alt="Diego Maradona" class="background-image right-img">
-        <img id="diego02" src="../images/1575581231301Maradona.png" alt="Diego Festejando" class="background-image left-img">
+        <div class="collage-fondo">
+            <img src="../images/diego-maradona-10.png" alt="Diego Serio" class="collage-img">
+            
+            <img src="../images/png-transparent-diego-maradona-jersey-1986-fifa-world-cup-t-shirt-ユニフォーム-maradona-tshirt-sport-team.png" alt="Diego 86" class="collage-img">
+            
+            <img src="../images/4N47WTPQS5HK7FMDS6TXDKS46Q.avif" alt="Retrato Diego" class="collage-img">
+            
+            <img src="../images/1575581231301Maradonax.webp" alt="Diego Grito" class="collage-img">
+            
+            <img src="../images/png-clipart-soccer-player-about-to-kick-soccerball-t-shirt-hoodie-argentina-national-football-team-t-shirt-blue-sport.png" alt="Diego Jugando" class="collage-img">
+
+            <img src="../images/cde6479a6533bf52758b3f04cacb8717.jpg" alt="Diego copa del mundo" class="collage-img">
+        </div>
         
     </section>    
 
     <script src="../js/frasesdeldiego.js"></script>
 </body>
 </html>
-
 
