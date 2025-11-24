@@ -2,67 +2,67 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Frases de Diego Maradona | Generador de frases del Diego</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frases de Diego Maradona | El 10 Eterno</title>    
     <meta name="google-site-verification" content="z2m7ag2pEUyXjUDQVQobjg-SNN3XF5giQDek7cpBkdw" />
-
+    
     <meta name="description" content="Generador de las frases más icónicas y memorables de Diego Armando Maradona. Descubre una nueva cita del '10' con cada clic.">
     <meta name="keywords" content="frases de maradona, frases del diego, diego armando maradona, citas maradona, la pelota no se mancha">
-
-    <link rel="icon" href="../images/logo.webp" type="image/x-icon">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Six+Caps&family=Newsreader:opsz,wght@6..72,200;6..72,300;6..72,400;6..72,500&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Six+Caps&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <link rel="stylesheet" type="text/css" href="css/navbar.css">
     <link rel="stylesheet" type="text/css" href="../css/frasesdeldiego.css">
 </head>
 
 <body>
 
+    <div class="noise-overlay"></div>
+
     <header>
-        <h1>Frases del Diego</h1>
-        <nav>
-            <a href="https://oneeyedbastard.github.io/">Volver a Proyectos</a>
-        </nav>
+        <h1 class="glitch" data-glitch="FRASES DEL DIEGO">
+            FRASES DEL DIEGO
+        </h1>
+        <a href="https://oneeyedbastard.github.io/" class="icono-navegacion">
+            <img src="../images/10.webp" alt="Ir a Biografía" class="menu-icon-img">
+        </a>
     </header>
 
-    <main class="main-container">
+    <section id="inicio" class="main-container">
        
-        <div class="contenedor-frase">
-            <p id="fraseDiego"></p>
+        <div class="contenedor-frase animate__animated" id="contenedorAnimado">
+            <p id="fraseDiego">"La pelota no se mancha"</p>
         </div>
-        <div class="contenedor-boton">
-            <button id="cambiar-frase" onclick="cambiarFrase()">
-                Cambiar Frase
+
+        <div class="control-deck">
+            
+            <button id="botonModo" class="btn-icon" aria-label="Cambiar modo" onclick="cambiarModo()">
+                <i class="fas fa-random"></i>
             </button>
-        </div>
+            
+            <button id="cambiar-frase" class="btn-principal" onclick="cambiarFrase()">
+                OTRA DEL 10 <i class="fas fa-futbol"></i>
+            </button>
+            
+            <button id="botonCompartir" class="btn-icon" aria-label="Compartir" onclick="compartirFrase()">
+                <i class="fas fa-share-alt"></i>
+            </button>
 
-        <img id="diego01" src="../images/diego-maradona-10.png" alt="" class="background-image-01">
-        <img id="diego02" src="../images/1575581231301Maradona.png" alt="" class="background-image-02">
-        
-    </main>
+            <div id="contadorFrases" class="contador-badge">1/40</div>
+        </div>    
     
-
-    <footer>
-        <h2>Contacto</h2>
-        <ul>
-            <li>
-                <a href="https://www.linkedin.com/in/oneeyedbastard/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            </li>
-            <li>
-                <a href="mailto:oneeyedbastard@outlook.com.ar">oneeyedbastard@outlook.com.ar</a>
-            </li>
-        </ul>
-    </footer>
+        <img id="diego01" src="../images/diego-maradona-10.png" alt="Diego Maradona" class="background-image right-img">
+        <img id="diego02" src="../images/1575581231301Maradona.png" alt="Diego Festejando" class="background-image left-img">
+        
+    </section>    
 
     <script src="../js/frasesdeldiego.js"></script>
-
 </body>
 </html>
-
-
-
 
 
