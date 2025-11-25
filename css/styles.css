@@ -39,21 +39,26 @@ button, a {
 }
 
 p {
-    font-weight: 400;       
-    line-height: 1.6;       
-    font-size: 1.05rem;     
-    color: #2c2c2c;         
-    text-wrap: pretty;      
+    font-weight: 400;       /* Peso normal para lectura cómoda */
+    line-height: 1.6;       /* Más aire entre líneas */
+    font-size: 1.05rem;     /* Tamaño ligeramente aumentado */
+    color: #2c2c2c;         /* Gris muy oscuro en vez de negro puro */
+    text-wrap: pretty;      /* Evita viudas y huérfanas */
 }
 
-/* TÍTULOS DE SECCIÓN CON TEXTO BLANCO Y SOMBRA SÓLIDA NEGRA */
-.sobre-mi h2,
-.seccion-proyectos h2 {
-    color: var(--blanco) !important;
-    text-shadow: 4px 4px 0px var(--negro) !important;
-    font-size: 2.5rem;
+/* ESTILOS UNIFICADOS PARA TODOS LOS TÍTULOS */
+h2 {
+    text-shadow: 4px 4px 0px var(--negro);
+    color: var(--blanco);    
+    font-size: 6rem;
     margin-bottom: 2rem;
     text-align: center;
+}
+
+.sobre-mi h2 {
+    text-shadow: 4px 4px 0px var(--negro);
+    color: var(--blanco);
+    font-size: 6rem;
 }
 
 /* =========================================
@@ -166,7 +171,7 @@ p {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 70%;
+    width: 20%;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -283,12 +288,14 @@ p {
     pointer-events: auto !important;
     cursor: pointer;
     font-family: 'Alfa Slab One', serif;
-    font-size: clamp(80px, 8vw, 120px) !important;
+    font-size: clamp(120px, 8vw, 120px) !important;
     white-space: pre;
     text-align: left;
     padding: 20px;
     overflow: auto;
     font-weight: 900;
+    color: #ffffff;
+
 }
 
 .tarjeta-presentacion {
@@ -405,11 +412,6 @@ p {
     align-items: center;
 }
 
-.sobre-mi h2 {
-    color: var(--negro);
-    text-shadow: none;
-}
-
 .aboutMe {
     width: 100%;
 }
@@ -472,29 +474,6 @@ p {
    7. MEDIA QUERIES
    ========================================= */
 
-@media screen and (min-width: 900px) {
-    .navlist {
-        width: 40%;
-    }
-}
-
-/* Escritorios Grandes */
-@media screen and (min-width: 1200px) {
-    .navlist {
-        width: 30%;
-    }
-    
-    .contenedor-nombre {
-        font-size: 70px;
-    }
-    
-    .sobre-mi h2,
-    .seccion-proyectos h2 {
-        font-size: 3.5rem;
-    }
-}
-
-/* Móviles */
 @media screen and (max-width: 600px) {
     
     .navlist {
@@ -506,13 +485,22 @@ p {
         width: 95%;
     }
 
-    .sobre-mi h2,
-    .seccion-proyectos h2 {
+    h2 {
         font-size: 2rem;
     }
     
+    .sobre-mi h2 {
+        font-size: 65px;
+    }
+    
+    /* CORRECCIÓN: Tamaño más legible para el código PHP en móviles */
     .php-code-bg {
-        font-size: clamp(16px, 4vw, 24px) !important;
-        padding: 10px;
+        font-size: clamp(64px, 16vw, 96px) !important;
+        padding: 5px;      
+    }
+        
+    .tarjeta-presentacion {
+        padding: 20px;
     }
 }
+
