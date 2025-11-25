@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
        ========================================= */
     const codigosPHP = [
         "<?php\nfunction elevar(\$n) {\n  return \$n * \$n;\n}\n?>",
+        "<?php\necho'Contratáme!' ?>",
         "<?php\n\$user = Auth::user();\necho \$user->name;\n?>",
         "<?php\n// Conexión PDO\n\$pdo = new PDO('mysql:host=localhost', \$u, \$p);\n?>",
         "<?php\nforeach (\$items as \$i) {\n  echo strtoupper(\$i);\n}\n?>",
